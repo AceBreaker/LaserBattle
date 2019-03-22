@@ -22,9 +22,9 @@ GameObject:
   - component: {fileID: 33867112557102986}
   - component: {fileID: 23970867536006562}
   - component: {fileID: 65956399049820512}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Space
-  m_TagString: Untagged
+  m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
