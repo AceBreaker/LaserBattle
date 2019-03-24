@@ -12,6 +12,8 @@ namespace LaserBattle
         [SerializeField] LayerMask raycastLayerWithSelectedObject;
         [SerializeField] Camera mainCamera;
 
+        [SerializeField] float rotationAmountDegrees;
+
         GameObject selectedObject = null;
 
         private void OnEnable()
@@ -38,10 +40,8 @@ namespace LaserBattle
                     {
                         case "Movable":
                             {
-                                Debug.Log("hit a movable thing");
                                 if (hit.transform.parent.gameObject.GetComponent<MoveableUnit>().GetOwner() == playerNumber)
                                 {
-                                    Debug.Log("moveable thing is mine");
                                     selectedObject = hit.transform.gameObject;
                                 }
                                 break;
@@ -54,7 +54,6 @@ namespace LaserBattle
                     {
                         case "Tile":
                             {
-                                Debug.Log("tile");
                                 selectedObject = null;
                                 break;
                             }
@@ -89,15 +88,13 @@ namespace LaserBattle
 
         void OnMouseScroll()
         {
-            //TODO: needs to be a bit prettier and to get rid of magic numbers
-            if(Input.mouseScrollDelta.y > 0)
+            if(selectedObject == null)
             {
-                selectedObject.transform.Rotate(new Vector3(0.0f, 0.0f, -90.0f));
+                Debug.LogError("No selectedObject");
+                return;
             }
-            if (Input.mouseScrollDelta.y < 0)
-            {
-                selectedObject.transform.Rotate(new Vector3(0.0f, 0.0f, 90.0f));
-            }
+
+            selectedObject.transform.Rotate(new Vector3(0.0f, 0.0f, rotationAmountDegrees * Input.mouseScrollDelta.y));
         }
     }
 }

@@ -19,3 +19,4 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   mainCamera: {fileID: 0}
+  rotationAmountDegrees: -90
