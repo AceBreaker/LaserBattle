@@ -12,9 +12,16 @@ namespace LaserBattle
         [SerializeField] LayerMask raycastLayerWithSelectedObject;
         [SerializeField] Camera mainCamera;
 
+        [SerializeField] GameEvent turnOver;
+
         [SerializeField] float rotationAmountDegrees;
 
         GameObject selectedObject = null;
+
+        public void Initialize(PlayerNumbers pNumber)
+        {
+            playerNumber = pNumber;
+        }
 
         private void OnEnable()
         {
@@ -55,6 +62,7 @@ namespace LaserBattle
                         case "Tile":
                             {
                                 selectedObject = null;
+                                turnOver.Raise();
                                 break;
                             }
                     }

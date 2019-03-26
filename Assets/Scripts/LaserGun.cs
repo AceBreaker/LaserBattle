@@ -67,6 +67,11 @@ public class LaserGun : MonoBehaviour {
                     AddToLine(vectors);
                     return;
                 }
+                if(hit.transform.gameObject.layer == LayerMask.NameToLayer("Base"))
+                {
+                    Debug.Log("A player base has been hit and someone loses here");
+                    return;
+                }
             }
             else
             {
