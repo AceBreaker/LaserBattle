@@ -7,7 +7,7 @@ namespace LaserBattle
     public class GameManager : MonoBehaviour {
 
         public GameObject currentTurnPlayer;
-        PlayerNumbers number;
+        public static PlayerNumbers number;
 
         public void ChangeTurn()
         {
@@ -16,6 +16,7 @@ namespace LaserBattle
             {
                 currentTurnPlayer = child.gameObject;
                 currentTurnPlayer.GetComponent<Player>().ToggleTurn();
+                number = currentTurnPlayer.GetComponent<Player>().GetPlayerNumber();
                 //currentTurnPlayer.GetComponent<Player>().GetPlayerNumber();
                 child.SetAsLastSibling();
                 break;

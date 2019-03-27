@@ -17,7 +17,7 @@ MonoBehaviour:
     m_Bits: 512
   raycastLayerWithSelectedObject:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 1536
   mainCamera: {fileID: 0}
-  turnOver: {fileID: 11400000, guid: 8cc3429d75b47e84fa6c3d571bbb7fdf, type: 2}
+  turnOver: {fileID: 11400000, guid: dee2118611200ab4d9ea80a72196913d, type: 2}
   rotationAmountDegrees: -90

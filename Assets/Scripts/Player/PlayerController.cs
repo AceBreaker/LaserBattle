@@ -18,6 +18,9 @@ namespace LaserBattle
 
         GameObject selectedObject = null;
 
+        Vector3 objectPositionWhenSelected;
+        Quaternion objectRotationWhenSelected;
+
         public void Initialize(PlayerNumbers pNumber)
         {
             playerNumber = pNumber;
@@ -50,6 +53,9 @@ namespace LaserBattle
                                 if (hit.transform.parent.gameObject.GetComponent<MoveableUnit>().GetOwner() == playerNumber)
                                 {
                                     selectedObject = hit.transform.gameObject;
+                                    objectPositionWhenSelected = selectedObject.transform.position;
+                                    objectRotationWhenSelected = selectedObject.transform.rotation;
+                                    selectedObject.transform.Find("FloorIgnorer").gameObject.SetActive(false);
                                 }
                                 break;
                             }
@@ -61,16 +67,66 @@ namespace LaserBattle
                     {
                         case "Tile":
                             {
-                                selectedObject = null;
-                                turnOver.Raise();
+                                if (IsNewLocation(hit))
+                                {
+                                    FinalizeMove();
+                                }
+                                else
+                                {
+                                    UndoMove();
+                                }
+                                break;
+                            }
+                        case "Movable":
+                            {
+                                if(selectedObject == hit.transform.gameObject && IsNewLocation(hit))
+                                {
+                                    FinalizeMove();
+                                }
+                                else
+                                {
+                                    UndoMove();
+                                }
                                 break;
                             }
                     }
                 }
             }
 
+            if(Input.GetKeyDown(KeyCode.Escape))
+            {
+                UndoMove();
+            }
+
             OnMouseDrag();
             OnMouseScroll();
+        }
+
+        void UndoMove()
+        {
+            selectedObject.transform.position = objectPositionWhenSelected;
+            selectedObject.transform.rotation = objectRotationWhenSelected;
+            selectedObject.transform.Find("FloorIgnorer").gameObject.SetActive(true);
+            objectPositionWhenSelected = Vector3.zero;
+            objectRotationWhenSelected = Quaternion.identity;
+            selectedObject = null;
+        }
+
+        void FinalizeMove()
+        {
+            selectedObject.transform.Find("FloorIgnorer").gameObject.SetActive(true);
+            objectPositionWhenSelected = Vector3.zero;
+            objectRotationWhenSelected = Quaternion.identity;
+            selectedObject = null;
+            turnOver.Raise();
+        }
+
+        bool IsNewLocation(RaycastHit hit)
+        {
+            if(hit.transform.position != objectPositionWhenSelected || hit.transform.rotation != objectRotationWhenSelected)
+                return true;
+
+            return false;
         }
 
         void OnMouseDrag()

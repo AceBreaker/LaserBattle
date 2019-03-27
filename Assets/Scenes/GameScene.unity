@@ -5032,7 +5032,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerNumber: 1
   myTurn: 0
-  controller: {fileID: 11400000, guid: 2428ac95d675eff4193dedc527c1517f, type: 2}
+  controller: {fileID: 11400000, guid: c702592c8904540418e97146ea8d1214, type: 2}
 --- !u!1 &1170773003
 GameObject:
   m_ObjectHideFlags: 0
@@ -5213,6 +5213,7 @@ GameObject:
   - component: {fileID: 1189110951}
   - component: {fileID: 1189110952}
   - component: {fileID: 1189110953}
+  - component: {fileID: 1189110954}
   m_Layer: 9
   m_Name: Players
   m_TagString: Untagged
@@ -5258,7 +5259,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c740036b009a3824fbf2ee341ec9ac3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 8cc3429d75b47e84fa6c3d571bbb7fdf, type: 2}
+  Event: {fileID: 11400000, guid: dee2118611200ab4d9ea80a72196913d, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1189110952}
+        m_MethodName: ChangeTurn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &1189110954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1189110950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c740036b009a3824fbf2ee341ec9ac3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: ad1b8d9d6b8a0d34e9ade4f796ed608c, type: 2}
   Response:
     m_PersistentCalls:
       m_Calls:
@@ -5367,6 +5396,12 @@ Prefab:
       propertyPath: m_Name
       value: BlueLaserGun
       objectReference: {fileID: 0}
+    - target: {fileID: 114192775107708980, guid: 9498bd2845f577747abb5aa9c201b119,
+        type: 2}
+      propertyPath: Event
+      value: 
+      objectReference: {fileID: 11400000, guid: ad1b8d9d6b8a0d34e9ade4f796ed608c,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9498bd2845f577747abb5aa9c201b119, type: 2}
   m_IsPrefabAsset: 0
@@ -5758,30 +5793,12 @@ Prefab:
       propertyPath: m_Name
       value: RedLaserGun
       objectReference: {fileID: 0}
-    - target: {fileID: 120969542882522782, guid: 9498bd2845f577747abb5aa9c201b119,
+    - target: {fileID: 114192775107708980, guid: 9498bd2845f577747abb5aa9c201b119,
         type: 2}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 23037902227720036, guid: 9498bd2845f577747abb5aa9c201b119,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: Event
       value: 
-      objectReference: {fileID: 2100000, guid: 037ceae78306250439458cada6f0702a, type: 2}
-    - target: {fileID: 23802956343608778, guid: 9498bd2845f577747abb5aa9c201b119,
+      objectReference: {fileID: 11400000, guid: dee2118611200ab4d9ea80a72196913d,
         type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 037ceae78306250439458cada6f0702a, type: 2}
-    - target: {fileID: 23102191856528282, guid: 9498bd2845f577747abb5aa9c201b119,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 037ceae78306250439458cada6f0702a, type: 2}
-    - target: {fileID: 4180258223326968, guid: 9498bd2845f577747abb5aa9c201b119, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9498bd2845f577747abb5aa9c201b119, type: 2}
   m_IsPrefabAsset: 0
@@ -8357,11 +8374,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 23073424512496870, guid: 3aa0ca5347df4bf459cccf1b2a653d88,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 037ceae78306250439458cada6f0702a, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3aa0ca5347df4bf459cccf1b2a653d88, type: 2}
   m_IsPrefabAsset: 0
