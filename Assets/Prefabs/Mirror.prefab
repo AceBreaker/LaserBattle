@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 33628348361530844}
   - component: {fileID: 23173194522435234}
   - component: {fileID: 65355237481241998}
+  - component: {fileID: 114297242529527554}
   m_Layer: 0
   m_Name: DestroyObject
   m_TagString: Untagged
@@ -56,6 +57,7 @@ GameObject:
   - component: {fileID: 33956421200910866}
   - component: {fileID: 23678758414040912}
   - component: {fileID: 65893246092081298}
+  - component: {fileID: 114825388886346510}
   m_Layer: 0
   m_Name: DestroyObject
   m_TagString: Untagged
@@ -499,6 +501,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114297242529527554
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1206548959396344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 995b62c068217b54d81138758205b02d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parent: {fileID: 1171901806387810}
 --- !u!114 &114610682717532794
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -523,3 +537,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 20232026156332688}
+--- !u!114 &114825388886346510
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1323654048884510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 995b62c068217b54d81138758205b02d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parent: {fileID: 1171901806387810}

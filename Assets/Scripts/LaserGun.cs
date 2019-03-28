@@ -95,7 +95,7 @@ namespace LaserBattle
 
         void TriggerObjectDeath(GameObject gameObject)
         {
-            Destroy(gameObject.transform.parent.parent.gameObject);
+            Destroy(gameObject.GetComponent<ParentReference>().parent);
         }
 
         void AddToLine(List<Vector3> linePoints)
