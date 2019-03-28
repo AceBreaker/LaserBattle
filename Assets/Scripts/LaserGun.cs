@@ -70,6 +70,12 @@ namespace LaserBattle
                         AddToLine(vectors);
                         return;
                     }
+                    if (hit.transform.gameObject.name == "DestroyObject")
+                    {
+                        TriggerObjectDeath(hit.transform.gameObject);
+                        AddToLine(vectors);
+                        return;
+                    }
                     if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Base"))
                     {
                         AddToLine(vectors);
@@ -85,6 +91,11 @@ namespace LaserBattle
 
             vectors.Add(new Vector3(directionVector.x, 0.0091f, directionVector.z) * 100 + vectors[vectors.Count - 1]);
             AddToLine(vectors);
+        }
+
+        void TriggerObjectDeath(GameObject gameObject)
+        {
+            Destroy(gameObject.transform.parent.parent.gameObject);
         }
 
         void AddToLine(List<Vector3> linePoints)

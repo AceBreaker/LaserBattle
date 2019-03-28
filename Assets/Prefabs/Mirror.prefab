@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 23173194522435234}
   - component: {fileID: 65355237481241998}
   m_Layer: 0
-  m_Name: IgnoreLaserBounce
+  m_Name: DestroyObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 23678758414040912}
   - component: {fileID: 65893246092081298}
   m_Layer: 0
-  m_Name: IgnoreLaserBounce
+  m_Name: DestroyObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
