@@ -67,7 +67,7 @@ namespace LaserBattle
                     {
                         case "Tile":
                             {
-                                if (IsNewLocation(hit))
+                                if (IsNewLocation(hit) && IsValidLocation(hit))
                                 {
                                     FinalizeMove();
                                 }
@@ -79,7 +79,7 @@ namespace LaserBattle
                             }
                         case "Movable":
                             {
-                                if(selectedObject == hit.transform.gameObject && IsNewLocation(hit))
+                                if(selectedObject == hit.transform.gameObject && IsNewLocation(hit) && IsValidLocation(hit))
                                 {
                                     FinalizeMove();
                                 }
@@ -102,6 +102,9 @@ namespace LaserBattle
             OnMouseScroll();
         }
 
+        /// <summary>
+        /// Resets the position of the selected object to the original location
+        /// </summary>
         void UndoMove()
         {
             selectedObject.transform.position = objectPositionWhenSelected;
@@ -112,6 +115,31 @@ namespace LaserBattle
             selectedObject = null;
         }
 
+        /// <summary>
+        /// Checks if the location in the RaycastHit is a valid place to move the selected unit
+        /// </summary>
+        /// <param name="hit"></param>
+        /// <returns></returns>
+        bool IsValidLocation(RaycastHit hit)
+        {
+            if (Mathf.Abs(selectedObject.transform.position.x - objectPositionWhenSelected.x) < 1.5f &&
+                Mathf.Abs(selectedObject.transform.position.z - objectPositionWhenSelected.z) < 1.5f &&
+                selectedObject.transform.rotation == objectRotationWhenSelected)
+            {
+                return true;
+            }
+            else if (Mathf.Abs(selectedObject.transform.position.x - objectPositionWhenSelected.x) == 0.0f &&
+                Mathf.Abs(selectedObject.transform.position.z - objectPositionWhenSelected.z) == 0.0f &&
+                selectedObject.transform.rotation != objectRotationWhenSelected)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Finishes the unit movement and fires the end of turn event
+        /// </summary>
         void FinalizeMove()
         {
             selectedObject.transform.Find("FloorIgnorer").gameObject.SetActive(true);
