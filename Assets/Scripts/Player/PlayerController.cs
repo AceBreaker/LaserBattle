@@ -122,7 +122,12 @@ namespace LaserBattle
         /// <returns></returns>
         bool IsValidLocation(RaycastHit hit)
         {
-            if (Mathf.Abs(selectedObject.transform.position.x - objectPositionWhenSelected.x) < 1.5f &&
+            Debug.Log(hit.transform.gameObject.ToString());
+            if (spaceColorMismatch)
+            {
+                return false;
+            }
+            else if (Mathf.Abs(selectedObject.transform.position.x - objectPositionWhenSelected.x) < 1.5f &&
                 Mathf.Abs(selectedObject.transform.position.z - objectPositionWhenSelected.z) < 1.5f &&
                 selectedObject.transform.rotation == objectRotationWhenSelected)
             {
@@ -157,6 +162,8 @@ namespace LaserBattle
             return false;
         }
 
+        bool spaceColorMismatch = false;
+
         void OnMouseDrag()
         {
             //TODO: get rid of magic numbers
@@ -171,6 +178,20 @@ namespace LaserBattle
                         case "Tile":
                             {
                                 selectedObject.transform.position = hit.transform.position + new Vector3(0.0f, 0.8f, 0.0f);
+                                RestrictedSpace space = hit.transform.gameObject.GetComponent<RestrictedSpace>();
+                                if(space == null)
+                                {
+                                    Debug.Log("space is nullASDFASDFASDFASDFASDFASDF");
+                                }
+                                else
+                                    Debug.Log("space ISNT nullASDFASDFASDFASDFASDFASDF");
+                                if (space != null && space.GetPlayerNumber() != selectedObject.transform.parent.GetComponent<MoveableUnit>().GetOwner())
+                                {
+                                    Debug.Log("color mismatch");
+                                    spaceColorMismatch = true;
+                                }
+                                else
+                                    spaceColorMismatch = false;
                                 break;
                             }
                     }
