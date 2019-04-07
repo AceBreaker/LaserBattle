@@ -34,5 +34,10 @@ namespace LaserBattle
         {
             return playerNumber;
         }
+
+        public void FinalizeMove()
+        {
+            controller.FinalizeMove();
+        }
     }
 }

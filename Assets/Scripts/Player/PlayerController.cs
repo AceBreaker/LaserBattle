@@ -17,13 +17,17 @@ namespace LaserBattle
         [SerializeField] float rotationAmountDegrees;
 
         GameObject selectedObject = null;
+        GameObject movedObject = null;
 
         Vector3 objectPositionWhenSelected;
         Quaternion objectRotationWhenSelected;
 
+        bool moved = false;
+
         public void Initialize(PlayerNumbers pNumber)
         {
             playerNumber = pNumber;
+            
         }
 
         private void OnEnable()
@@ -35,16 +39,20 @@ namespace LaserBattle
             }
 
             selectedObject = null;
+            moved = false;
+            Debug.Log("moved == " + moved.ToString());
         }
 
         public virtual void Update()
         {
             //TODO function this out, and get rid of magic numbers.
-            if (Input.GetMouseButtonDown(0))
+            if ( Input.GetMouseButtonDown(0))
             {
+                Debug.Log("wut");
                 Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hit;
-                if (selectedObject == null && Physics.Raycast(ray, out hit, 100.0f, raycastLayer))
+                Debug.Log("moved == " + moved.ToString());
+                if (!moved && selectedObject == null && Physics.Raycast(ray, out hit, 100.0f, raycastLayer))
                 {
                     switch (hit.transform.gameObject.tag)
                     {
@@ -69,7 +77,11 @@ namespace LaserBattle
                             {
                                 if (IsNewLocation(hit) && IsValidLocation(hit))
                                 {
-                                    FinalizeMove();
+                                    Debug.Log("wtf1");
+                                    moved = true;
+                                    movedObject = selectedObject;
+                                    selectedObject = null;
+                                    //FinalizeMove();
                                 }
                                 else
                                 {
@@ -81,7 +93,11 @@ namespace LaserBattle
                             {
                                 if(selectedObject == hit.transform.gameObject && IsNewLocation(hit) && IsValidLocation(hit))
                                 {
-                                    FinalizeMove();
+                                    Debug.Log("wtf2");
+                                    moved = true;
+                                    movedObject = selectedObject;
+                                    selectedObject = null;
+                                    //FinalizeMove();
                                 }
                                 else
                                 {
@@ -107,12 +123,15 @@ namespace LaserBattle
         /// </summary>
         void UndoMove()
         {
+            if(movedObject != null)
+                selectedObject = movedObject;
             selectedObject.transform.position = objectPositionWhenSelected;
             selectedObject.transform.rotation = objectRotationWhenSelected;
             selectedObject.transform.Find("FloorIgnorer").gameObject.SetActive(true);
             objectPositionWhenSelected = Vector3.zero;
             objectRotationWhenSelected = Quaternion.identity;
             selectedObject = null;
+            moved = false;
         }
 
         /// <summary>
@@ -145,12 +164,13 @@ namespace LaserBattle
         /// <summary>
         /// Finishes the unit movement and fires the end of turn event
         /// </summary>
-        void FinalizeMove()
+        public void FinalizeMove()
         {
-            selectedObject.transform.Find("FloorIgnorer").gameObject.SetActive(true);
+            movedObject.transform.Find("FloorIgnorer").gameObject.SetActive(true);
             objectPositionWhenSelected = Vector3.zero;
             objectRotationWhenSelected = Quaternion.identity;
-            selectedObject = null;
+            movedObject = null;
+            moved = false;
             turnOver.Raise();
         }
 

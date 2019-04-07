@@ -22,5 +22,10 @@ namespace LaserBattle
                 break;
             }
         }
+
+        public void EndTurn()
+        {
+            currentTurnPlayer.GetComponent<Player>().FinalizeMove();
+        }
     }
 }
