@@ -27,5 +27,15 @@ namespace LaserBattle
         {
             currentTurnPlayer.GetComponent<Player>().FinalizeMove();
         }
+
+        public void RedWins()
+        {
+            Debug.Log("RED WINS");
+        }
+
+        public void BlueWins()
+        {
+            Debug.Log("BLUE WINS");
+        }
     }
 }

@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4429503772577740}
   - component: {fileID: 33160468561616186}
   - component: {fileID: 23802956343608778}
-  - component: {fileID: 65592668423302856}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -39,7 +38,6 @@ GameObject:
   - component: {fileID: 4116516358679566}
   - component: {fileID: 33000140458490232}
   - component: {fileID: 23037902227720036}
-  - component: {fileID: 135114758603808818}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -58,9 +56,10 @@ GameObject:
   - component: {fileID: 120969542882522782}
   - component: {fileID: 114729796602735446}
   - component: {fileID: 114192775107708980}
-  m_Layer: 0
+  - component: {fileID: 65966130633996158}
+  m_Layer: 12
   m_Name: LaserGun
-  m_TagString: Untagged
+  m_TagString: Laser
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -90,7 +89,6 @@ GameObject:
   - component: {fileID: 4939672524278372}
   - component: {fileID: 33124983730566830}
   - component: {fileID: 23102191856528282}
-  - component: {fileID: 136011422071943482}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -293,18 +291,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1230792998256414}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &65592668423302856
+--- !u!65 &65966130633996158
 BoxCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1230792998256414}
+  m_GameObject: {fileID: 1488181061792010}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.8793659, y: 0.50318915, z: 0.94633484}
+  m_Center: {x: 0.012199402, y: -0.13840541, z: 0.01323092}
 --- !u!114 &114192775107708980
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -316,7 +314,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c740036b009a3824fbf2ee341ec9ac3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 8cc3429d75b47e84fa6c3d571bbb7fdf, type: 2}
+  Event: {fileID: 11400000, guid: dee2118611200ab4d9ea80a72196913d, type: 2}
   Response:
     m_PersistentCalls:
       m_Calls:
@@ -349,6 +347,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   facingDirection: {x: -1, y: 0, z: 0}
+  playerNumber: 0
 --- !u!120 &120969542882522782
 LineRenderer:
   m_ObjectHideFlags: 1
@@ -449,28 +448,3 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
---- !u!135 &135114758603808818
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1356759036650250}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!136 &136011422071943482
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1837659540059346}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}

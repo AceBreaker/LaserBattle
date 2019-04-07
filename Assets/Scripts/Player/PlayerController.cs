@@ -27,7 +27,7 @@ namespace LaserBattle
         public void Initialize(PlayerNumbers pNumber)
         {
             playerNumber = pNumber;
-            
+
         }
 
         private void OnEnable()
@@ -46,12 +46,10 @@ namespace LaserBattle
         public virtual void Update()
         {
             //TODO function this out, and get rid of magic numbers.
-            if ( Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0))
             {
-                Debug.Log("wut");
                 Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hit;
-                Debug.Log("moved == " + moved.ToString());
                 if (!moved && selectedObject == null && Physics.Raycast(ray, out hit, 100.0f, raycastLayer))
                 {
                     switch (hit.transform.gameObject.tag)
@@ -67,6 +65,21 @@ namespace LaserBattle
                                 }
                                 break;
                             }
+                        case "Laser":
+                            {
+                                Debug.Log("laser hit");
+                                if (hit.transform.gameObject.GetComponent<LaserGun>().GetOwner() == playerNumber)
+                                {
+                                    hit.transform.gameObject.GetComponent<LaserGun>().ToggleLaserAim();
+                                    movedObject = hit.transform.gameObject;
+                                }
+                                break;
+                            }
+                        default:
+                            {
+                                Debug.Log("Correct tag was not hit. Object was: " + hit.transform.gameObject.name);
+                                break;
+                            }
                     }
                 }
                 else if (selectedObject != null && Physics.Raycast(ray, out hit, 100.0f, raycastLayerWithSelectedObject))
@@ -77,11 +90,9 @@ namespace LaserBattle
                             {
                                 if (IsNewLocation(hit) && IsValidLocation(hit))
                                 {
-                                    Debug.Log("wtf1");
                                     moved = true;
                                     movedObject = selectedObject;
                                     selectedObject = null;
-                                    //FinalizeMove();
                                 }
                                 else
                                 {
@@ -91,13 +102,11 @@ namespace LaserBattle
                             }
                         case "Movable":
                             {
-                                if(selectedObject == hit.transform.gameObject && IsNewLocation(hit) && IsValidLocation(hit))
+                                if (selectedObject == hit.transform.gameObject && IsNewLocation(hit) && IsValidLocation(hit))
                                 {
-                                    Debug.Log("wtf2");
                                     moved = true;
                                     movedObject = selectedObject;
                                     selectedObject = null;
-                                    //FinalizeMove();
                                 }
                                 else
                                 {
@@ -109,13 +118,30 @@ namespace LaserBattle
                 }
             }
 
-            if(Input.GetKeyDown(KeyCode.Escape))
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
                 UndoMove();
             }
 
             OnMouseDrag();
             OnMouseScroll();
+
+            LogDebugInfo();
+        }
+
+        private void LogDebugInfo()
+        {
+            if(Input.GetKeyDown(KeyCode.F1))
+            {
+                DebugInfo();
+            }
+        }
+
+        private void DebugInfo()
+        {
+            string so = selectedObject == null ? "null" : selectedObject.name;
+            string mo = movedObject == null ? "null" : movedObject.name;
+            Debug.Log(so + "::" + mo);
         }
 
         /// <summary>
@@ -125,12 +151,24 @@ namespace LaserBattle
         {
             if(movedObject != null)
                 selectedObject = movedObject;
-            selectedObject.transform.position = objectPositionWhenSelected;
-            selectedObject.transform.rotation = objectRotationWhenSelected;
-            selectedObject.transform.Find("FloorIgnorer").gameObject.SetActive(true);
-            objectPositionWhenSelected = Vector3.zero;
-            objectRotationWhenSelected = Quaternion.identity;
+            Unit u = selectedObject.GetComponent<Unit>();
+            if(u == null)
+            {
+                u = selectedObject.GetComponentInParent<Unit>();
+            }
+            u.UndoMove();
+
+            if (u.CanMove())
+            {
+                Debug.Log("unit can move");
+                selectedObject.transform.position = objectPositionWhenSelected;
+                selectedObject.transform.rotation = objectRotationWhenSelected;
+                //selectedObject.transform.Find("FloorIgnorer").gameObject.SetActive(true);
+                objectPositionWhenSelected = Vector3.zero;
+                objectRotationWhenSelected = Quaternion.identity;
+            }
             selectedObject = null;
+            movedObject = null;
             moved = false;
         }
 
@@ -166,9 +204,24 @@ namespace LaserBattle
         /// </summary>
         public void FinalizeMove()
         {
-            movedObject.transform.Find("FloorIgnorer").gameObject.SetActive(true);
-            objectPositionWhenSelected = Vector3.zero;
-            objectRotationWhenSelected = Quaternion.identity;
+            if (movedObject == null)
+            {
+                return;
+            }
+
+            Unit u = movedObject.GetComponent<Unit>();
+            if(u == null)
+            {
+                u = movedObject.GetComponentInParent<Unit>();
+            }
+            u.FinalizeMove();
+            //movedObject.transform.Find("FloorIgnorer").gameObject.SetActive(true);
+            if (u.CanMove())
+            {
+                objectPositionWhenSelected = Vector3.zero;
+                objectRotationWhenSelected = Quaternion.identity;
+            }
+            selectedObject = null;
             movedObject = null;
             moved = false;
             turnOver.Raise();
@@ -201,10 +254,10 @@ namespace LaserBattle
                                 RestrictedSpace space = hit.transform.gameObject.GetComponent<RestrictedSpace>();
                                 if(space == null)
                                 {
-                                    Debug.Log("space is nullASDFASDFASDFASDFASDFASDF");
+                                    Debug.Log("space is null");
                                 }
                                 else
-                                    Debug.Log("space ISNT nullASDFASDFASDFASDFASDFASDF");
+                                    Debug.Log("space ISNT null");
                                 if (space != null && space.GetPlayerNumber() != selectedObject.transform.parent.GetComponent<MoveableUnit>().GetOwner())
                                 {
                                     Debug.Log("color mismatch");

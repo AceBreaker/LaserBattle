@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace LaserBattle
 {
-    public class LaserGun : MonoBehaviour {
+    public class LaserGun : Unit {
 
         [SerializeField] int holdLaserFrameCount;
         LineRenderer line;
@@ -13,17 +13,33 @@ namespace LaserBattle
 
         [SerializeField] PlayerNumbers playerNumber;
 
+        int direction = -1;
+
         private void Awake()
         {
+            canMove = false;
             line = GetComponent<LineRenderer>();
         }
 
-        private void Update()
+        public PlayerNumbers GetOwner()
         {
-            //if (Input.GetKeyDown(KeyCode.Space))
-            //{
-            //    FireLaser();
-            //}
+            return playerNumber;
+        }
+
+        public void ToggleLaserAim()
+        {
+            transform.Rotate(new Vector3(0.0f, 90.0f * direction, 0.0f));
+            direction *= -1;
+        }
+
+        public override void FinalizeMove()
+        {
+            Debug.Log("finalizing move");
+        }
+
+        public override void UndoMove()
+        {
+            ToggleLaserAim();
         }
 
         public void FireLaser()
@@ -79,7 +95,18 @@ namespace LaserBattle
                     if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Base"))
                     {
                         AddToLine(vectors);
-                        Debug.Log("A player base has been hit and someone loses here");
+                        Base b = hit.transform.gameObject.GetComponent<Base>();
+                        b.baseDestroyedEvent.Raise();
+                        //if (b.playerNumber == PlayerNumbers.ONE)
+                        //{
+                        //    blueWins.Raise();
+                        //}
+                        //else if (b.playerNumber == PlayerNumbers.TWO)
+                        //{
+                        //    redWins.Raise();
+                        //}
+                        //Destroy(hit.transform.gameObject);
+
                         return;
                     }
                 }

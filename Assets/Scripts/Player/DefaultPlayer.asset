@@ -14,7 +14,7 @@ MonoBehaviour:
   playerNumber: 0
   raycastLayer:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 4608
   raycastLayerWithSelectedObject:
     serializedVersion: 2
     m_Bits: 1536
