@@ -15,6 +15,8 @@ namespace LaserBattle
 
         int direction = -1;
 
+        [SerializeField] GameEventGameObject1x destroyedObjectGameEvent;
+
         private void Awake()
         {
             canMove = false;
@@ -122,7 +124,17 @@ namespace LaserBattle
 
         void TriggerObjectDeath(GameObject gameObject)
         {
-            Destroy(gameObject.GetComponent<ParentReference>().parent);
+            if(destroyedObjectGameEvent == null)
+            {
+                Debug.LogError("No event has been set.");
+            }
+            destroyedObjectGameEvent.Raise(gameObject.GetComponent<ParentReference>().parent);
+            //DestructibleObject dObject = gameObject.GetComponent<ParentReference>().parent.GetComponent<DestructibleObject>();
+            //if(dObject == null)
+            //{
+            //    Debug.LogError("No DestructibleObject. Consider adding one in the inspector");
+            //}
+            //dObject.DestroyObject();
         }
 
         void AddToLine(List<Vector3> linePoints)

@@ -348,6 +348,8 @@ MonoBehaviour:
     m_Bits: 512
   facingDirection: {x: -1, y: 0, z: 0}
   playerNumber: 0
+  destroyedObjectGameEvent: {fileID: 11400000, guid: 2af3743093bd36c44bc8d818b2a913e8,
+    type: 2}
 --- !u!120 &120969542882522782
 LineRenderer:
   m_ObjectHideFlags: 1
