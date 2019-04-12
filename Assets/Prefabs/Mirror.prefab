@@ -567,7 +567,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50f1811cba23c57468bd20da9ecb5f2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyParticles: {fileID: 1169736009997834, guid: 2bb580af401694f4486f46a9bdfbb617,
+  destroyParticles: {fileID: 1828176872806910, guid: 64891a0eb28db934898420d80ca07cb3,
     type: 2}
 --- !u!114 &114822317397643072
 MonoBehaviour:

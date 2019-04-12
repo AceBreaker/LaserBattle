@@ -9,8 +9,12 @@ namespace LaserBattle
 
         public GameEvent baseDestroyedEvent;
 
+        [SerializeField] GameObject destroyParticle;
+
         public void ObjectDestroyed()
         {
+            GameObject particleEffect = Instantiate(destroyParticle, transform.position, transform.rotation);
+            Destroy(particleEffect, 2.0f);
             Destroy(gameObject);
         }
     }
