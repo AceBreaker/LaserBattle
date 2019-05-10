@@ -62,6 +62,7 @@ namespace LaserBattle
                                     objectPositionWhenSelected = selectedObject.transform.position;
                                     objectRotationWhenSelected = selectedObject.transform.rotation;
                                     selectedObject.transform.Find("FloorIgnorer").gameObject.SetActive(false);
+                                    hit.transform.parent.gameObject.GetComponent<MoveableUnit>().UnitSelected();
                                 }
                                 break;
                             }
@@ -90,6 +91,11 @@ namespace LaserBattle
                             {
                                 if (IsNewLocation(hit) && IsValidLocation(hit))
                                 {
+                                    MoveableUnit u = selectedObject.transform.parent.gameObject.GetComponent<MoveableUnit>();
+                                    if(u != null)
+                                    {
+                                        u.UnitUnselected();
+                                    }
                                     moved = true;
                                     movedObject = selectedObject;
                                     selectedObject = null;
@@ -104,6 +110,11 @@ namespace LaserBattle
                             {
                                 if (selectedObject == hit.transform.gameObject && IsNewLocation(hit) && IsValidLocation(hit))
                                 {
+                                    MoveableUnit u = selectedObject.transform.parent.gameObject.GetComponent<MoveableUnit>();
+                                    if (u != null)
+                                    {
+                                        u.UnitUnselected();
+                                    }
                                     moved = true;
                                     movedObject = selectedObject;
                                     selectedObject = null;
@@ -204,6 +215,7 @@ namespace LaserBattle
         /// </summary>
         public void FinalizeMove()
         {
+            Debug.Log("finalizing move here");
             if (movedObject == null)
             {
                 return;

@@ -10,6 +10,9 @@ namespace LaserBattle
 
         [SerializeField] GameObject floorIgnorer;
 
+        [SerializeField] GameEventGameObject1x selectedUnitEvent;
+        [SerializeField] GameEventGameObject1x unselectedUnitEvent;
+
         public void OnEnable()
         {
             canMove = true;
@@ -23,13 +26,29 @@ namespace LaserBattle
 
         public override void FinalizeMove()
         {
-
+            Vector3 additive = transform.GetChild(0).transform.localPosition;
+            transform.position -= additive;
+            transform.GetChild(0).transform.localPosition = Vector3.zero;
+            UnitUnselected();
         }
 
         public override void UndoMove()
         {
             Debug.Log(gameObject.name);
+            UnitUnselected();
             floorIgnorer.gameObject.SetActive(true);
+        }
+
+        public void UnitSelected()
+        {
+            selectedUnitEvent.Raise(gameObject);
+        }
+
+        public void UnitUnselected()
+        {
+            Debug.Log("asdfasdfasdfasdf");
+            if(unselectedUnitEvent != null)
+                unselectedUnitEvent.Raise(gameObject);
         }
     }
 }
