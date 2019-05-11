@@ -300,7 +300,7 @@ namespace LaserBattle
                 return;
             }
 
-            selectedObject.transform.Rotate(new Vector3(0.0f, 0.0f, rotationAmountDegrees * Input.mouseScrollDelta.y));
+            selectedObject.transform.Rotate(new Vector3(0.0f, rotationAmountDegrees * Input.mouseScrollDelta.y, 0.0f));// rotationAmountDegrees * Input.mouseScrollDelta.y));
         }
     }
 }
