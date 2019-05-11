@@ -13,7 +13,7 @@ public class Unit : MonoBehaviour, IUnit
 
     public virtual void FinalizeMove()
     {
-        Debug.Log("ASDFKJASDFKJHASDLFKJHASUnitObject");
+
     }
 
     public virtual void UndoMove()

@@ -56,13 +56,20 @@ namespace LaserBattle
                     {
                         case "Movable":
                             {
-                                if (hit.transform.parent.gameObject.GetComponent<MoveableUnit>().GetOwner() == playerNumber)
+                                MoveableUnit unit = hit.transform.gameObject.GetComponentInParent<MoveableUnit>();
+                                if (unit != null && unit.GetOwner() == playerNumber)
                                 {
-                                    selectedObject = hit.transform.gameObject;
+                                    selectedObject = unit.gameObject;
                                     objectPositionWhenSelected = selectedObject.transform.position;
                                     objectRotationWhenSelected = selectedObject.transform.rotation;
-                                    selectedObject.transform.Find("FloorIgnorer").gameObject.SetActive(false);
-                                    hit.transform.parent.gameObject.GetComponent<MoveableUnit>().UnitSelected();
+
+                                    Transform go = selectedObject.transform.FindDeepChild("FloorIgnorer");
+                                    if(go != null)
+                                    {
+                                        go.gameObject.SetActive(false);
+                                    }
+                                    //selectedObject.transform.Find("FloorIgnorer").gameObject.SetActive(false);
+                                    unit.UnitSelected();
                                 }
                                 break;
                             }
@@ -78,7 +85,7 @@ namespace LaserBattle
                             }
                         default:
                             {
-                                Debug.Log("Correct tag was not hit. Object was: " + hit.transform.gameObject.name);
+                                Debug.Log("Correct tag was not hit. Object was: " + hit.transform.gameObject.name + " with a tag of: " + hit.transform.gameObject.tag);
                                 break;
                             }
                     }
@@ -91,7 +98,7 @@ namespace LaserBattle
                             {
                                 if (IsNewLocation(hit) && IsValidLocation(hit))
                                 {
-                                    MoveableUnit u = selectedObject.transform.parent.gameObject.GetComponent<MoveableUnit>();
+                                    MoveableUnit u = selectedObject.GetComponent<MoveableUnit>();
                                     if(u != null)
                                     {
                                         u.UnitUnselected();
@@ -108,12 +115,13 @@ namespace LaserBattle
                             }
                         case "Movable":
                             {
-                                if (selectedObject == hit.transform.gameObject && IsNewLocation(hit) && IsValidLocation(hit))
+                                MoveableUnit unit = hit.transform.GetComponentInParent<MoveableUnit>();
+                                if (unit != null && selectedObject == unit.gameObject && IsNewLocation(hit) && IsValidLocation(hit))
                                 {
-                                    MoveableUnit u = selectedObject.transform.parent.gameObject.GetComponent<MoveableUnit>();
-                                    if (u != null)
+                                    //MoveableUnit u = selectedObject.GetComponentInParent<MoveableUnit>();
+                                    if (unit != null)
                                     {
-                                        u.UnitUnselected();
+                                        unit.UnitUnselected();
                                     }
                                     moved = true;
                                     movedObject = selectedObject;
@@ -270,7 +278,7 @@ namespace LaserBattle
                                 }
                                 else
                                     Debug.Log("space ISNT null");
-                                if (space != null && space.GetPlayerNumber() != selectedObject.transform.parent.GetComponent<MoveableUnit>().GetOwner())
+                                if (space != null && space.GetPlayerNumber() != selectedObject.transform.GetComponent<MoveableUnit>().GetOwner())
                                 {
                                     Debug.Log("color mismatch");
                                     spaceColorMismatch = true;

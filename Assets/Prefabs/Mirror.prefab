@@ -1121,6 +1121,7 @@ MonoBehaviour:
   - {fileID: 1740755555366910}
   myParent: {fileID: 1171901806387810}
   unitsContainer: {fileID: 0}
+  playerColors: []
 --- !u!114 &114297242529527554
 MonoBehaviour:
   m_ObjectHideFlags: 1
