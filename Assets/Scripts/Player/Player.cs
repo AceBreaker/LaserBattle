@@ -13,6 +13,7 @@ namespace LaserBattle
 
         private void Start()
         {
+            controller.Initialize(playerNumber);
         }
 
         // Update is called once per frame

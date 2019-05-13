@@ -28,10 +28,17 @@ namespace LaserBattle
         {
             playerNumber = pNumber;
 
+            Debug.Log("PlayerController is being initialized here");
+            mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
+            if (mainCamera == null)
+            {
+                Debug.LogError("mainCamera is not set, will cause errors");
+            }
         }
 
         private void OnEnable()
         {
+            Debug.Log("PlayerController is being enabled here");
             mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
             if (mainCamera == null)
             {

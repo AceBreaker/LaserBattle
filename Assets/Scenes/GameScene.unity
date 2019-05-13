@@ -8071,6 +8071,11 @@ Prefab:
       value: 
       objectReference: {fileID: 11400000, guid: ad1b8d9d6b8a0d34e9ade4f796ed608c,
         type: 2}
+    - target: {fileID: 120969542882522782, guid: 9498bd2845f577747abb5aa9c201b119,
+        type: 2}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9498bd2845f577747abb5aa9c201b119, type: 2}
   m_IsPrefabAsset: 0
@@ -8944,6 +8949,11 @@ Prefab:
     - target: {fileID: 1488181061792010, guid: 9498bd2845f577747abb5aa9c201b119, type: 2}
       propertyPath: m_Name
       value: RedLaserGun
+      objectReference: {fileID: 0}
+    - target: {fileID: 120969542882522782, guid: 9498bd2845f577747abb5aa9c201b119,
+        type: 2}
+      propertyPath: m_SortingOrder
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9498bd2845f577747abb5aa9c201b119, type: 2}
@@ -10323,26 +10333,26 @@ Transform:
   m_Children:
   - {fileID: 1918939679}
   - {fileID: 1326090506}
-  - {fileID: 1151506068}
   - {fileID: 532959838}
-  - {fileID: 14029844}
+  - {fileID: 1612109080}
   - {fileID: 2080956429}
-  - {fileID: 546606200}
+  - {fileID: 1527754113}
   - {fileID: 827538686}
   - {fileID: 64082727}
-  - {fileID: 2018749754}
   - {fileID: 1752881080}
-  - {fileID: 2146024731}
   - {fileID: 77691957}
+  - {fileID: 546606200}
   - {fileID: 1775645892}
-  - {fileID: 1576198042}
   - {fileID: 849341388}
+  - {fileID: 1151506068}
   - {fileID: 1620574902}
+  - {fileID: 2146024731}
   - {fileID: 478751282}
+  - {fileID: 1576198042}
   - {fileID: 169899317}
   - {fileID: 1947754061}
-  - {fileID: 1527754113}
-  - {fileID: 1612109080}
+  - {fileID: 14029844}
+  - {fileID: 2018749754}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
