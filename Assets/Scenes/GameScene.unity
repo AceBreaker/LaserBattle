@@ -2233,7 +2233,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!81 &197366629
 AudioListener:
   m_ObjectHideFlags: 0
@@ -9213,6 +9213,36 @@ Prefab:
     - target: {fileID: 1488181061792010, guid: 9498bd2845f577747abb5aa9c201b119, type: 2}
       propertyPath: m_Name
       value: RedLaserGun
+      objectReference: {fileID: 0}
+    - target: {fileID: 198970871981649950, guid: 9498bd2845f577747abb5aa9c201b119,
+        type: 2}
+      propertyPath: NoiseModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198970871981649950, guid: 9498bd2845f577747abb5aa9c201b119,
+        type: 2}
+      propertyPath: NoiseModule.strength.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198970871981649950, guid: 9498bd2845f577747abb5aa9c201b119,
+        type: 2}
+      propertyPath: NoiseModule.frequency
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198970871981649950, guid: 9498bd2845f577747abb5aa9c201b119,
+        type: 2}
+      propertyPath: NoiseModule.scrollSpeed.scalar
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198970871981649950, guid: 9498bd2845f577747abb5aa9c201b119,
+        type: 2}
+      propertyPath: NoiseModule.damping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198970871981649950, guid: 9498bd2845f577747abb5aa9c201b119,
+        type: 2}
+      propertyPath: NoiseModule.octaves
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9498bd2845f577747abb5aa9c201b119, type: 2}
