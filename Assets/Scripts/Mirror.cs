@@ -11,7 +11,7 @@ namespace LaserBattle
 
         private void Start()
         {
-            rt = new RenderTexture(256, 256, 16, RenderTextureFormat.ARGB32);
+            rt = new RenderTexture(16, 16, 8, RenderTextureFormat.ARGB32);
             rt.Create();
 
             camera.targetTexture = rt;

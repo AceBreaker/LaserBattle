@@ -1,39 +1,41 @@
 fileFormatVersion: 2
-guid: 5c9d4e1a7ff4ae2449f1c5996bf90ca2
+guid: 01e3479206ca5a64eac3f1a9891d84a1
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: Cylinder
-    100002: //RootNode
-    100004: MirrorFace
-    100006: PoweOrb3
-    100008: PowerOrb1
-    100010: PowerOrb2
-    400000: Cylinder
-    400002: //RootNode
-    400004: MirrorFace
-    400006: PoweOrb3
-    400008: PowerOrb1
-    400010: PowerOrb2
+    100000: //RootNode
+    100002: Gem1
+    100004: Gem2
+    100006: Gem3
+    100008: Gem4
+    100010: Gem5
+    100012: Sphere
+    400000: //RootNode
+    400002: Gem1
+    400004: Gem2
+    400006: Gem3
+    400008: Gem4
+    400010: Gem5
+    400012: Sphere
     2100000: No Name
-    2100002: Material.001
-    2100004: Material.002
-    2300000: Cylinder
-    2300002: MirrorFace
-    2300004: PoweOrb3
-    2300006: PowerOrb1
-    2300008: PowerOrb2
-    3300000: Cylinder
-    3300002: MirrorFace
-    3300004: PoweOrb3
-    3300006: PowerOrb1
-    3300008: PowerOrb2
-    4300000: Cylinder
-    4300002: PowerOrb1
-    4300004: PowerOrb2
-    4300006: PoweOrb3
-    4300008: MirrorFace
-    2186277476908879412: ImportLogs
+    2300000: Gem1
+    2300002: Gem2
+    2300004: Gem3
+    2300006: Gem4
+    2300008: Gem5
+    2300010: Sphere
+    3300000: Gem1
+    3300002: Gem2
+    3300004: Gem3
+    3300006: Gem4
+    3300008: Gem5
+    3300010: Sphere
+    4300000: Gem1
+    4300002: Gem2
+    4300004: Gem3
+    4300006: Gem4
+    4300008: Gem5
+    4300010: Sphere
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -65,7 +67,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 0.35
+    globalScale: 0.25
     meshCompression: 0
     addColliders: 0
     importVisibility: 1

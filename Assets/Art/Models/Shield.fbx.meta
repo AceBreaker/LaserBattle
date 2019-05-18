@@ -1,39 +1,26 @@
 fileFormatVersion: 2
-guid: 5c9d4e1a7ff4ae2449f1c5996bf90ca2
+guid: 04f62d2c1dce64c46b3a5316e59bcc4a
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: Cylinder
-    100002: //RootNode
-    100004: MirrorFace
-    100006: PoweOrb3
-    100008: PowerOrb1
-    100010: PowerOrb2
-    400000: Cylinder
-    400002: //RootNode
-    400004: MirrorFace
-    400006: PoweOrb3
-    400008: PowerOrb1
-    400010: PowerOrb2
+    100000: Container
+    100002: powerOrb
+    100004: //RootNode
+    100006: Shield
+    400000: Container
+    400002: powerOrb
+    400004: //RootNode
+    400006: Shield
     2100000: No Name
-    2100002: Material.001
-    2100004: Material.002
-    2300000: Cylinder
-    2300002: MirrorFace
-    2300004: PoweOrb3
-    2300006: PowerOrb1
-    2300008: PowerOrb2
-    3300000: Cylinder
-    3300002: MirrorFace
-    3300004: PoweOrb3
-    3300006: PowerOrb1
-    3300008: PowerOrb2
-    4300000: Cylinder
-    4300002: PowerOrb1
-    4300004: PowerOrb2
-    4300006: PoweOrb3
-    4300008: MirrorFace
-    2186277476908879412: ImportLogs
+    2300000: Container
+    2300002: powerOrb
+    2300004: Shield
+    3300000: Container
+    3300002: powerOrb
+    3300004: Shield
+    4300000: Shield
+    4300002: powerOrb
+    4300004: Container
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -65,7 +52,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 0.35
+    globalScale: 0.3
     meshCompression: 0
     addColliders: 0
     importVisibility: 1
