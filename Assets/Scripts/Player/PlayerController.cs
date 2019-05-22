@@ -24,6 +24,9 @@ namespace LaserBattle
 
         bool moved = false;
 
+        public GameEvent moveMade;
+        public GameEvent moveUndone;
+
         public void Initialize(PlayerNumbers pNumber)
         {
             playerNumber = pNumber;
@@ -113,6 +116,7 @@ namespace LaserBattle
                                     moved = true;
                                     movedObject = selectedObject;
                                     selectedObject = null;
+                                    moveMade.Raise();
                                 }
                                 else
                                 {
@@ -133,6 +137,7 @@ namespace LaserBattle
                                     moved = true;
                                     movedObject = selectedObject;
                                     selectedObject = null;
+                                    moveMade.Raise();
                                 }
                                 else
                                 {
@@ -196,6 +201,7 @@ namespace LaserBattle
             selectedObject = null;
             movedObject = null;
             moved = false;
+            moveUndone.Raise();
         }
 
         /// <summary>
@@ -277,7 +283,10 @@ namespace LaserBattle
                     {
                         case "Tile":
                             {
-                                selectedObject.transform.position = hit.transform.position + new Vector3(0.0f, 0.8f, 0.0f);
+                                //selectedObject.transform.position = hit.transform.position + new Vector3(0.0f, 0.8f, 0.0f);
+                                Vector3 startPosition = selectedObject.transform.position;
+                                Vector3 endPosition = hit.transform.position + new Vector3(0.0f, 0.8f, 0.0f);
+                                selectedObject.GetComponent<MoveUnit>().MoveToPosition(startPosition, endPosition);
                                 RestrictedSpace space = hit.transform.gameObject.GetComponent<RestrictedSpace>();
                                 if(space == null)
                                 {

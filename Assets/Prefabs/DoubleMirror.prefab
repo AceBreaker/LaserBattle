@@ -118,6 +118,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4471198920849014}
   - component: {fileID: 114195482157371568}
+  - component: {fileID: 114568893587729438}
   m_Layer: 9
   m_Name: DoubleMirror
   m_TagString: Movable
@@ -283,7 +284,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1506566808398416}
-  m_LocalRotation: {x: -0.27059805, y: -0.6532815, z: -0.6532815, w: 0.27059805}
+  m_LocalRotation: {x: -0.6532815, y: -0.27059805, z: -0.27059805, w: 0.6532815}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.1875, y: 1, z: 1}
   m_Children:
@@ -294,7 +295,7 @@ Transform:
   - {fileID: 4815336337876478}
   m_Father: {fileID: 4471198920849014}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90, y: -90, z: -45}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: -45}
 --- !u!4 &4197624647315464
 Transform:
   m_ObjectHideFlags: 1
@@ -362,7 +363,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1462425468259728}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.4, y: 0.8, z: -3.3}
+  m_LocalPosition: {x: -5.5, y: 0.8, z: -3.3}
   m_LocalScale: {x: 0.79999995, y: 0.79999995, z: 0.79999995}
   m_Children:
   - {fileID: 4158941105975782}
@@ -1134,6 +1135,19 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: GameObject1xUnityEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+--- !u!114 &114568893587729438
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1462425468259728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db01f97da4356d844b17b7945b1c34a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 1
+  lerpTime: 0.08
 --- !u!114 &114817057870489286
 MonoBehaviour:
   m_ObjectHideFlags: 1

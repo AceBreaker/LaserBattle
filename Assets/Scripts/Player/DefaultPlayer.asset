@@ -21,3 +21,5 @@ MonoBehaviour:
   mainCamera: {fileID: 0}
   turnOver: {fileID: 11400000, guid: dee2118611200ab4d9ea80a72196913d, type: 2}
   rotationAmountDegrees: -90
+  moveMade: {fileID: 11400000, guid: 7a26ead0c667d5c4fa712c3ab62b85c1, type: 2}
+  moveUndone: {fileID: 11400000, guid: a79eb84ca54923c4d8821e61a4edf1ca, type: 2}

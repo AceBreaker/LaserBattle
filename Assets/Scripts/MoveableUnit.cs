@@ -46,7 +46,6 @@ namespace LaserBattle
 
         public void UnitUnselected()
         {
-            Debug.Log("asdfasdfasdfasdf");
             if(unselectedUnitEvent != null)
                 unselectedUnitEvent.Raise(gameObject);
         }
