@@ -222,6 +222,11 @@ GameObject:
   - component: {fileID: 4734891373243738}
   - component: {fileID: 33109224350049096}
   - component: {fileID: 23143130226318264}
+  - component: {fileID: 108757775097267326}
+  - component: {fileID: 114672756351721680}
+  - component: {fileID: 114197320898345266}
+  - component: {fileID: 114173548061798796}
+  - component: {fileID: 114592193654505872}
   m_Layer: 0
   m_Name: Container
   m_TagString: Untagged
@@ -549,7 +554,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 037ceae78306250439458cada6f0702a, type: 2}
+  - {fileID: 2100000, guid: f4c8bcdad5741634c92d3bab538bf970, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -916,6 +921,43 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!108 &108757775097267326
+Light:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1802757166823578}
+  m_Enabled: 1
+  serializedVersion: 8
+  m_Type: 2
+  m_Color: {r: 0.6039216, g: 0.054901965, b: 0, a: 1}
+  m_Intensity: 1
+  m_Range: 0
+  m_SpotAngle: 30
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 4
+  m_LightShadowCasterMode: 0
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
 --- !u!108 &108915101892813992
 Light:
   m_ObjectHideFlags: 1
@@ -1105,6 +1147,46 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destroyParticles: {fileID: 1828176872806910, guid: 64891a0eb28db934898420d80ca07cb3,
     type: 2}
+--- !u!114 &114173548061798796
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1802757166823578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0913527752f3336428b7db80be16a5cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  owningUnit: {fileID: 0}
+--- !u!114 &114197320898345266
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1802757166823578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c20404210f5cb3740905cfb08b076ab3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 2af3743093bd36c44bc8d818b2a913e8, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114173548061798796}
+        m_MethodName: StartDeathSequence
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: GameObject1xUnityEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!114 &114255369864977018
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1252,6 +1334,43 @@ MonoBehaviour:
   - {fileID: 1945869609699606}
   unitsContainer: {fileID: 0}
   playerColors: []
+--- !u!114 &114592193654505872
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1802757166823578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e791f8f1aa6073469706443f032078b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingRange: 0
+  endRange: 10
+  startIntensity: 10
+  endIntensity: 10
+  duration: 2
+--- !u!114 &114672756351721680
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1802757166823578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49e5dc157f866f44fbf3ddb870be9810, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultColor: {r: 0.5372549, g: 0, b: 0, a: 1}
+  deadColor: {r: 1, g: 0.3066038, b: 0.505281, a: 1}
+  defaultEmissionColor: {r: 0, g: 0, b: 0, a: 0}
+  deadEmissionColor: {r: 1, g: 0.30588236, b: 0.5058824, a: 1}
+  speed: 1
+  offset: 0
+  startLerping: 0
+  duration: 2
+  newColor: {r: 0, g: 0, b: 0, a: 0}
+  newEmissionColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &114693286960047042
 MonoBehaviour:
   m_ObjectHideFlags: 1

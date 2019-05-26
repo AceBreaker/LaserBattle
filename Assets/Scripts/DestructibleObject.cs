@@ -10,12 +10,21 @@ public class DestructibleObject : MonoBehaviour {
     {
         if(go == gameObject)
         {
-            if (destroyParticles != null)
-            {
-                GameObject particleEffect = Instantiate(destroyParticles, transform.position, transform.rotation);
-                Destroy(particleEffect, 2.0f);
-            }
-            Destroy(gameObject);
+            //if (destroyParticles != null)
+            //{
+            //    GameObject particleEffect = Instantiate(destroyParticles, transform.position, transform.rotation);
+            //    Destroy(particleEffect, 2.0f);
+            //}
+            Destroy(gameObject, 2.0f);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (destroyParticles != null)
+        {
+            GameObject particleEffect = Instantiate(destroyParticles, transform.position, transform.rotation);
+            Destroy(particleEffect, 2.0f);
         }
     }
 }
