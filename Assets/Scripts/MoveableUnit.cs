@@ -41,6 +41,7 @@ namespace LaserBattle
 
         public void UnitSelected()
         {
+            Debug.Log("Unit selected event firing here");
             selectedUnitEvent.Raise(gameObject);
         }
 

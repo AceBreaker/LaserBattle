@@ -89,13 +89,18 @@ namespace LaserBattle
 
         public void ResetCharge()
         {
-
-            Debug.Log("RESETTING CHARGE");
             if (jobsList == null)
             {
                 Debug.Log("jobsList is null");
                 return;
             }
+
+            if (rotVel <= 0.0f)
+            {
+                Debug.Log("rotationSpeed is zero. Not already charging so don't stop charging");
+                return;
+            }
+
             ResetAllData();
             jobsList.Clear();
 
@@ -156,8 +161,6 @@ namespace LaserBattle
 
         private void StartReset()
         {
-            Debug.Log("reset");
-
             RotationStartingCharge();
             if (jobsDone2)
             {
@@ -190,13 +193,11 @@ namespace LaserBattle
             }
             //Rigidbody rb = GetComponent<Rigidbody>();
             rotSpeed = Mathf.SmoothStep(rotMax, 0.0f, t);
-            //rb.maxAngularVelocity = 1000.0f;
-            //rb.angularVelocity = Vector3.Lerp(new Vector3(0.0f, 0.0f, rotationSpeed), Vector3.zero, t);
         }
+
         Vector3 startingPosition;
         private void StartRotationCorrection()
         {
-            Debug.Log("start rotation correct");
             startingCorrectRotation = transform.rotation.eulerAngles;
             startingPosition = transform.localPosition;
             timeSinceStart1 = 0.0f;
@@ -206,7 +207,6 @@ namespace LaserBattle
         Vector3 startingCorrectRotation;
         private void CorrectRotation()
         {
-            Debug.Log("Correcting rotation");
             MoveToStartingPosition();
             timeSinceStart1 += Time.deltaTime;
             float t = timeSinceStart1 / rotationTime;

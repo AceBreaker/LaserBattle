@@ -119,6 +119,8 @@ GameObject:
   - component: {fileID: 4471198920849014}
   - component: {fileID: 114195482157371568}
   - component: {fileID: 114568893587729438}
+  - component: {fileID: 114508722010598198}
+  - component: {fileID: 114210679889248994}
   m_Layer: 9
   m_Name: DoubleMirror
   m_TagString: Movable
@@ -1095,6 +1097,34 @@ MonoBehaviour:
   selectedUnitEvent: {fileID: 11400000, guid: f62ae552eda345d4aaaf440ecaf62ada, type: 2}
   unselectedUnitEvent: {fileID: 11400000, guid: 864b1f1f7b500144d8782ee68fffd124,
     type: 2}
+--- !u!114 &114210679889248994
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1462425468259728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c20404210f5cb3740905cfb08b076ab3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 864b1f1f7b500144d8782ee68fffd124, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114568893587729438}
+        m_MethodName: StopMoving
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: GameObject1xUnityEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!114 &114384643554065478
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1135,6 +1165,30 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: GameObject1xUnityEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+--- !u!114 &114508722010598198
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1462425468259728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce443886e234c0f47a25e971fcedc52d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 1
+  rotations:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 90, z: 0}
+  - {x: 0, y: -180, z: 0}
+  - {x: 0, y: -90, z: 0}
+  testRot:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 90, z: 0}
+  - {x: 0, y: 180, z: 0}
+  - {x: 0, y: 270, z: 0}
+  lerpTime: 0.1
+  index: 2
 --- !u!114 &114568893587729438
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1168,7 +1222,6 @@ MonoBehaviour:
   - {fileID: 1971621038655562}
   - {fileID: 1076662699622222}
   - {fileID: 1651796441201776}
-  myParent: {fileID: 1462425468259728}
   unitsContainer: {fileID: 0}
   playerColors:
   - {r: 1, g: 0, b: 0, a: 1}

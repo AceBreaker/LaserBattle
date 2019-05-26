@@ -7,23 +7,40 @@ namespace LaserBattle
     public class CalculateMoveTargets : MonoBehaviour {
 
         [SerializeField] GameObject[] moveIndicators;
-        [SerializeField] GameObject myParent;
+        private GameObject myParent;
+
+        public GameObject MyParent
+        {
+            set
+            {
+                myParent = value;
+                if (myParent != null)
+                {
+                    foreach (GameObject go in moveIndicators)
+                    {
+                        go.GetComponent<Light>().color = playerColors[(int)(myParent.GetComponent<MoveableUnit>().GetOwner())];
+                    }
+                }
+            }
+        }
+
         [SerializeField] GameObject unitsContainer;
 
         [SerializeField] Color[] playerColors;
 
         private void Awake()
         {
-            playerColors = new Color[2];
-            playerColors[0] = Color.red;
-            playerColors[1] = Color.cyan;
+            Initialize();
+        }
 
-            unitsContainer = transform.root.gameObject;
+        public void Initialize()
+        {
+                playerColors = new Color[2];
+                playerColors[0] = Color.green;
+                playerColors[1] = Color.green;
 
-            foreach (GameObject go in moveIndicators)
-            {
-                go.GetComponent<Light>().color = playerColors[(int)(myParent.GetComponent<MoveableUnit>().GetOwner())];
-            }
+                if (unitsContainer == null)
+                    unitsContainer = transform.root.gameObject;
         }
 
         public void PieceSelected(GameObject go)

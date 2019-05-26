@@ -31,7 +31,6 @@ namespace LaserBattle
         {
             playerNumber = pNumber;
 
-            Debug.Log("PlayerController is being initialized here");
             mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
             if (mainCamera == null)
             {
@@ -41,7 +40,6 @@ namespace LaserBattle
 
         private void OnEnable()
         {
-            Debug.Log("PlayerController is being enabled here");
             mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
             if (mainCamera == null)
             {
@@ -50,7 +48,6 @@ namespace LaserBattle
 
             selectedObject = null;
             moved = false;
-            Debug.Log("moved == " + moved.ToString());
         }
 
         public virtual void Update()
@@ -72,6 +69,8 @@ namespace LaserBattle
                                     selectedObject = unit.gameObject;
                                     objectPositionWhenSelected = selectedObject.transform.position;
                                     objectRotationWhenSelected = selectedObject.transform.rotation;
+
+                                    blah = selectedObject.transform.rotation.eulerAngles.y;
 
                                     Transform go = selectedObject.transform.FindDeepChild("FloorIgnorer");
                                     if(go != null)
@@ -191,10 +190,9 @@ namespace LaserBattle
 
             if (u.CanMove())
             {
-                Debug.Log("unit can move");
                 selectedObject.transform.position = objectPositionWhenSelected;
                 selectedObject.transform.rotation = objectRotationWhenSelected;
-                //selectedObject.transform.Find("FloorIgnorer").gameObject.SetActive(true);
+
                 objectPositionWhenSelected = Vector3.zero;
                 objectRotationWhenSelected = Quaternion.identity;
             }
@@ -308,6 +306,7 @@ namespace LaserBattle
             }
         }
 
+        public float blah = 0.0f;
         void OnMouseScroll()
         {
             if(selectedObject == null)
@@ -316,7 +315,15 @@ namespace LaserBattle
                 return;
             }
 
-            selectedObject.transform.Rotate(new Vector3(0.0f, rotationAmountDegrees * Input.mouseScrollDelta.y, 0.0f));// rotationAmountDegrees * Input.mouseScrollDelta.y));
+            float inputY = Input.mouseScrollDelta.y;
+            if (inputY != 0.0f)
+            {
+                Debug.Log("KJHASDFKJHASDFKJLHASD;FKLJASLKDF;J: " + blah);
+                blah += 90.0f * inputY;
+                //selectedObject.GetComponent<RotateUnit>().SetNewRotation(selectedObject.transform.rotation.eulerAngles, new Vector3(0.0f, rotationAmountDegrees * inputY, 0.0f));
+                selectedObject.GetComponent<RotateUnit>().SetNewRotation(selectedObject.transform.eulerAngles, inputY);
+            }
+            //selectedObject.transform.Rotate(new Vector3(0.0f, rotationAmountDegrees * Input.mouseScrollDelta.y, 0.0f));// rotationAmountDegrees * Input.mouseScrollDelta.y));
         }
     }
 }

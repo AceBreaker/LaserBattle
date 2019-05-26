@@ -14,7 +14,8 @@ namespace LaserBattle
 
         private void Start()
         {
-            gameObject.GetComponent<Renderer>().material.color = squareColors[(int)playerNumber];
+            if(squareColors.Count > (int)playerNumber )
+                gameObject.GetComponent<Renderer>().material.color = squareColors[(int)playerNumber];
         }
 
         public PlayerNumbers GetPlayerNumber()

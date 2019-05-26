@@ -20,7 +20,11 @@ public class MoveUnit : MonoBehaviour {
             timeSinceStart += Time.deltaTime;
             float t = timeSinceStart / lerpTime;
             if (timeSinceStart >= 1.0f)
+            {
                 t = 1.0f;
+                beginMoving = false;
+            }
+            
             transform.position = Vector3.Lerp(startPosition, endPosition, t);
         }
     }
@@ -31,5 +35,10 @@ public class MoveUnit : MonoBehaviour {
         endPosition = end;
         beginMoving = true;
         timeSinceStart = 0.0f;
+    }
+
+    public void StopMoving()
+    {
+        beginMoving = false;
     }
 }
