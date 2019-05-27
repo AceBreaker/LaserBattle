@@ -17,10 +17,17 @@ namespace LaserBattle
 
         [SerializeField] GameEventGameObject1x destroyedObjectGameEvent;
 
+        AudioManager audio;
+
         private void Awake()
         {
             canMove = false;
             line = GetComponent<LineRenderer>();
+        }
+
+        private void Start()
+        {
+            audio = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         }
 
         public PlayerNumbers GetOwner()
@@ -51,12 +58,14 @@ namespace LaserBattle
 
         private IEnumerator HoldLaser()
         {
+            audio.PlayAudio("laser");
             line.enabled = true;
             CalculateLaserTrajectory();
             for (int i = 0; i < holdLaserFrameCount; ++i)
             {
                 yield return null;
             }
+            audio.StopAudio("laser");
             Vector3[] blahj = new Vector3[0];
             line.SetPositions(blahj);
             line.enabled = false;

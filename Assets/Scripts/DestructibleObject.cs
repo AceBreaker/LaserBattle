@@ -8,6 +8,12 @@ namespace LaserBattle
     public class DestructibleObject : MonoBehaviour {
 
         [SerializeField] GameObject destroyParticles;
+        public AudioManager audio;
+
+        private void Start()
+        {
+            audio = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+        }
 
         public void DestroyObject(GameObject go)
         {
@@ -21,9 +27,15 @@ namespace LaserBattle
         {
             if (!GameManager.quittingOrChangingScene && destroyParticles != null)
             {
+                if(audio != null)
+                {
+                    audio.PlayAudio("explosion");
+                }
+
                 GameObject particleEffect = Instantiate(destroyParticles, transform.position, transform.rotation);
                 Destroy(particleEffect, 2.0f);
             }
         }
+
     }
 }

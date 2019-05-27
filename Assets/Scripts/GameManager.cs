@@ -12,8 +12,12 @@ namespace LaserBattle
 
         private void Awake()
         {
-            Debug.Log("qweryuiqweryuiwqeryuiqwoer");
             quittingOrChangingScene = false;
+        }
+
+        private void Start()
+        {
+            GameObject.Find("AudioManager").GetComponent<AudioManager>().PlayAudio("ambient");
         }
 
         public void ChangeTurn()
