@@ -8,11 +8,13 @@ namespace LaserBattle
     {
         public void StartGame()
         {
+            GameManager.quittingOrChangingScene = false;
             UnityEngine.SceneManagement.SceneManager.LoadScene("GameScene");
         }
 
         public void ExitGame()
         {
+            GameManager.quittingOrChangingScene = true;
             Application.Quit();
         }
     }

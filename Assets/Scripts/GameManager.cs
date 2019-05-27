@@ -8,6 +8,13 @@ namespace LaserBattle
 
         public GameObject currentTurnPlayer;
         public static PlayerNumbers number;
+        public static bool quittingOrChangingScene = false;
+
+        private void Awake()
+        {
+            Debug.Log("qweryuiqweryuiwqeryuiqwoer");
+            quittingOrChangingScene = false;
+        }
 
         public void ChangeTurn()
         {
@@ -36,6 +43,11 @@ namespace LaserBattle
         public void BlueWins()
         {
             Debug.Log("BLUE WINS");
+        }
+
+        private void OnApplicationQuit()
+        {
+            GameManager.quittingOrChangingScene = true;
         }
     }
 }

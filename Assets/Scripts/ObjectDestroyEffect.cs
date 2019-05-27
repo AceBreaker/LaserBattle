@@ -7,17 +7,23 @@ namespace LaserBattle
     public class ObjectDestroyEffect : MonoBehaviour
     {
 
-        MaterialColorChanger changer;
-        LightRangeIncrease lightIncreaser;
+        public MaterialColorChanger changer;
+        public LightRangeIncrease lightIncreaser;
+        public ParticleEffectIncreaser particleIncreaser;
 
         public GameObject owningUnit;
 
         // Use this for initialization
         void Start()
         {
-            changer = GetComponent<MaterialColorChanger>();
-            lightIncreaser = GetComponent<LightRangeIncrease>();
-            owningUnit = gameObject.GetComponentInParent<MoveableUnit>().gameObject;
+            if(changer == null)
+                changer = GetComponent<MaterialColorChanger>();
+            if(lightIncreaser == null)
+                lightIncreaser = GetComponent<LightRangeIncrease>();
+            if(particleIncreaser == null)
+                particleIncreaser = GetComponent<ParticleEffectIncreaser>();
+            if(owningUnit == null)
+                owningUnit = gameObject.GetComponentInParent<MoveableUnit>().gameObject;
 
         }
 
@@ -25,11 +31,15 @@ namespace LaserBattle
         {
             if(owningUnit == dyingObject)
             {
-                changer.BeginColorChanging();
-                lightIncreaser.StartSequence();
+                if(changer != null)
+                    changer.BeginColorChanging();
+
+                if(lightIncreaser != null)
+                    lightIncreaser.StartSequence();
+
+                if (particleIncreaser != null)
+                    particleIncreaser.StartSequence();
             }
         }
-
-
     }
 }

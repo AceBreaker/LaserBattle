@@ -9,11 +9,13 @@ namespace LaserBattle
 
         public void Rematch()
         {
+            GameManager.quittingOrChangingScene = true;
             UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
         }
 
         public void ExitToMainMenu()
         {
+            GameManager.quittingOrChangingScene = true;
             UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
         }
     }

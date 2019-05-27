@@ -1,30 +1,29 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class DestructibleObject : MonoBehaviour {
+namespace LaserBattle
+{
+    public class DestructibleObject : MonoBehaviour {
 
-    [SerializeField] GameObject destroyParticles;
+        [SerializeField] GameObject destroyParticles;
 
-    public void DestroyObject(GameObject go)
-    {
-        if(go == gameObject)
+        public void DestroyObject(GameObject go)
         {
-            //if (destroyParticles != null)
-            //{
-            //    GameObject particleEffect = Instantiate(destroyParticles, transform.position, transform.rotation);
-            //    Destroy(particleEffect, 2.0f);
-            //}
-            Destroy(gameObject, 2.0f);
+            if (go == gameObject)
+            {
+                Destroy(gameObject, 2.0f);
+            }
         }
-    }
 
-    private void OnDestroy()
-    {
-        if (destroyParticles != null)
+        private void OnDestroy()
         {
-            GameObject particleEffect = Instantiate(destroyParticles, transform.position, transform.rotation);
-            Destroy(particleEffect, 2.0f);
+            if (!GameManager.quittingOrChangingScene && destroyParticles != null)
+            {
+                GameObject particleEffect = Instantiate(destroyParticles, transform.position, transform.rotation);
+                Destroy(particleEffect, 2.0f);
+            }
         }
     }
 }

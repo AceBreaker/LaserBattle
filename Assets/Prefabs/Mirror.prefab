@@ -1945,9 +1945,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultColor: {r: 0.5372549, g: 0, b: 0, a: 1}
-  deadColor: {r: 1, g: 0, b: 0, a: 1}
+  deadColor: {r: 1, g: 0.30588236, b: 0.5058824, a: 1}
   defaultEmissionColor: {r: 0.003921569, g: 0.003921569, b: 0.003921569, a: 1}
-  deadEmissionColor: {r: 1, g: 0.2509804, b: 0, a: 1}
+  deadEmissionColor: {r: 1, g: 0.30588236, b: 0.5058824, a: 1}
   speed: 1
   offset: 0
   startLerping: 0
