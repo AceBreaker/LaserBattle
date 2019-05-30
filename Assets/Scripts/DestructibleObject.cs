@@ -20,6 +20,7 @@ namespace LaserBattle
             if (go == gameObject)
             {
                 Destroy(gameObject, 2.0f);
+                audio.PlayAudio("sizzle");
             }
         }
 

@@ -19,6 +19,7 @@ namespace LaserBattle
                 audioSources[i].clip = audioClips[i].clip;
                 audioSources[i].volume = audioClips[i].volume;
                 audioSources[i].loop = audioClips[i].looping;
+                audioSources[i].pitch = audioClips[i].pitch;
             }
         }
 
@@ -29,6 +30,17 @@ namespace LaserBattle
                 if (audioNames[i] == name)
                 {
                     audioSources[i].Play();
+                }
+            }
+        }
+
+        public void PlayAudioOneShot(string name)
+        {
+            for (int i = 0; i < audioNames.Count; ++i)
+            {
+                if (audioNames[i] == name)
+                {
+                    audioSources[i].PlayOneShot(audioClips[i].clip);
                 }
             }
         }
@@ -49,6 +61,7 @@ namespace LaserBattle
         {
             public AudioClip clip;
             public float volume;
+            public float pitch;
 
             public bool looping;
         }

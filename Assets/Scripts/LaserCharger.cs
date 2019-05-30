@@ -33,6 +33,13 @@ namespace LaserBattle
 
         public PlayerNumbers myPlayerNumber;
 
+        AudioManager audio;
+
+        private void Start()
+        {
+            audio = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+        }
+
         private void Update()
         {
             if (jobsDone)
@@ -54,8 +61,10 @@ namespace LaserBattle
             }
 
             rotVel += rotSpeed;
+                
             if (rotVel > 360.0f)
             {
+                audio.PlayAudioOneShot("whoosh");
                 rotVel -= 360.0f;
             }
             transform.localRotation = Quaternion.Euler(0.0f, 0.0f, rotVel);
