@@ -25,6 +25,11 @@ namespace LaserBattle
             }
         }
 
+        public void SetPlayerController(PlayerController newController)
+        {
+            controller = newController;
+        }
+
         public void ToggleTurn()
         {
             Debug.Log(gameObject.ToString());

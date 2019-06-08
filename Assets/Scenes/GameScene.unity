@@ -17524,6 +17524,104 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1012983094}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1038003366
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1038003370}
+  - component: {fileID: 1038003369}
+  - component: {fileID: 1038003368}
+  - component: {fileID: 1038003367}
+  m_Layer: 0
+  m_Name: Network
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1038003367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1038003366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf9a0baace0e4024baddcca2236dabbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  client: {fileID: 1038003369}
+--- !u!114 &1038003368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1038003366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 503a82d342ebac949be46a761ea306c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  client: {fileID: 1038003369}
+  players:
+  - {fileID: 1720951163}
+  - {fileID: 1161088863}
+  networkPlayers:
+  - {fileID: 11400000, guid: 7fd1af0272af80147a91d6caad044376, type: 2}
+  - {fileID: 11400000, guid: 0c4789f2dfb8f6445a9154663c8260ac, type: 2}
+  redTurnEnd: {fileID: 11400000, guid: dee2118611200ab4d9ea80a72196913d, type: 2}
+  blueTurnEnd: {fileID: 11400000, guid: ad1b8d9d6b8a0d34e9ade4f796ed608c, type: 2}
+--- !u!114 &1038003369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1038003366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d2b44c570cb28644b8762e0b13e7c23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  address: 127.0.0.1
+  port: 4296
+  ipVersion: 0
+  autoConnect: 1
+  invokeFromDispatcher: 1
+  sniffData: 0
+  objectCacheSettings:
+    maxWriters: 2
+    maxReaders: 2
+    maxMessages: 4
+    maxMessageBuffers: 4
+    maxSocketAsyncEventArgs: 32
+    maxActionDispatcherTasks: 16
+    maxAutoRecyclingArrays: 4
+    extraSmallMemoryBlockSize: 16
+    maxExtraSmallMemoryBlocks: 2
+    smallMemoryBlockSize: 64
+    maxSmallMemoryBlocks: 2
+    mediumMemoryBlockSize: 256
+    maxMediumMemoryBlocks: 2
+    largeMemoryBlockSize: 1024
+    maxLargeMemoryBlocks: 2
+    extraLargeMemoryBlockSize: 4096
+    maxExtraLargeMemoryBlocks: 2
+--- !u!4 &1038003370
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1038003366}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5, y: 1, z: 5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1038472110
 GameObject:
   m_ObjectHideFlags: 0
@@ -18633,7 +18731,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerNumber: 1
   myTurn: 0
-  controller: {fileID: 11400000, guid: c702592c8904540418e97146ea8d1214, type: 2}
+  controller: {fileID: 11400000, guid: 758112f612daff741a5a072a6dda6c18, type: 2}
 --- !u!1 &1161116045
 GameObject:
   m_ObjectHideFlags: 0
@@ -24215,7 +24313,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerNumber: 0
   myTurn: 1
-  controller: {fileID: 11400000, guid: 2428ac95d675eff4193dedc527c1517f, type: 2}
+  controller: {fileID: 11400000, guid: d47070dc52872f54689e372d2436f73b, type: 2}
 --- !u!4 &1720951164
 Transform:
   m_ObjectHideFlags: 0

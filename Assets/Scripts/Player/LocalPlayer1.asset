@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3f9ebcea4c87e44d8c62c1fb3a0e603, type: 3}
+  m_Name: LocalPlayer1
+  m_EditorClassIdentifier: 
+  playerNumber: 0
+  turnOver: {fileID: 11400000, guid: dee2118611200ab4d9ea80a72196913d, type: 2}
+  rotationAmountDegrees: -90
+  moveMade: {fileID: 11400000, guid: 7a26ead0c667d5c4fa712c3ab62b85c1, type: 2}
+  raycastLayer:
+    serializedVersion: 2
+    m_Bits: 4608
+  raycastLayerWithSelectedObject:
+    serializedVersion: 2
+    m_Bits: 1536
+  mainCamera: {fileID: 0}
+  moveUndone: {fileID: 11400000, guid: a79eb84ca54923c4d8821e61a4edf1ca, type: 2}
+  blah: 270

@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c24cf9de957b08429057a2c93c82b7f, type: 3}
+  m_Name: NetworkHuman2
+  m_EditorClassIdentifier: 
+  playerNumber: 1
+  turnOver: {fileID: 11400000, guid: ad1b8d9d6b8a0d34e9ade4f796ed608c, type: 2}
+  rotationAmountDegrees: -90
+  moveMade: {fileID: 0}
