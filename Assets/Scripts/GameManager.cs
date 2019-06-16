@@ -10,9 +10,12 @@ namespace LaserBattle
         public static PlayerNumbers number;
         public static bool quittingOrChangingScene = false;
 
+        public static bool gameStarted = false;
+
         private void Awake()
         {
             quittingOrChangingScene = false;
+            gameStarted = false;
         }
 
         private void Start()

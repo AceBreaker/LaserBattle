@@ -67,16 +67,10 @@ namespace LaserBattle
                     {
                         while (reader.Position < reader.Length)
                         {
-                            //ushort id = reader.ReadUInt16();
-                            //Debug.Log(id);
                             int pieceId = reader.ReadInt32();
-                            Debug.Log(pieceId);
                             float x = reader.ReadSingle();
-                            Debug.Log(x);
                             float z = reader.ReadSingle();
-                            Debug.Log(z);
                             float rotation = reader.ReadSingle();
-                            Debug.Log(rotation);
 
                             Transform unitsParentTransform = GameObject.Find("Units").transform;
                             for(int i = 0; i < unitsParentTransform.childCount; i++)
@@ -84,29 +78,47 @@ namespace LaserBattle
                                 if(pieceId == i)
                                 {
                                     Transform t = unitsParentTransform.GetChild(i);
-                                        t.position = new Vector3(x, t.position.y, z);
-                                    t.localRotation = Quaternion.Euler(new Vector3(0.0f, rotation + 180f, 0.0f));
+                                    MovePiece(t, x, z, rotation);
                                     break;
                                 }
                             }
-                            if (redTurn)
-                            {
-                                redTurnEnd.Raise();
-                            }
-                            else
-                            {
-                                blueTurnEnd.Raise();
-                            }
-                            //redTurn = !redTurn;
+                            StartCoroutine(TurnEnd());
                         }
                     }
                 }
             }
         }
 
+        IEnumerator TurnEnd()
+        {
+            float time = 0f;
+
+            while(time < 1.0f)
+            {
+                time += Time.deltaTime;
+                yield return null;
+            }
+
+            if (redTurn)
+            {
+                redTurnEnd.Raise();
+            }
+            else
+            {
+                blueTurnEnd.Raise();
+            }
+        }
+
+        void MovePiece(Transform t, float x, float z, float rotation)
+        {
+            MoveableUnit unit = t.gameObject.GetComponent<MoveableUnit>();
+            unit.SpawnGhost();
+            unit.NetworkMoveUnit(x, z);
+            unit.NetworkRotateUnit(rotation);// + rotationCorrection);
+        }
+
         public void ChangePlayer()
         {
-            Debug.Log("adsfkjhasdfkjlhasdfkljhasd");
             redTurn = !redTurn;
         }
 

@@ -1147,6 +1147,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destroyParticles: {fileID: 1828176872806910, guid: 64891a0eb28db934898420d80ca07cb3,
     type: 2}
+  audio: {fileID: 0}
 --- !u!114 &114173548061798796
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1158,6 +1159,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0913527752f3336428b7db80be16a5cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  changer: {fileID: 0}
+  lightIncreaser: {fileID: 0}
+  particleIncreaser: {fileID: 0}
   owningUnit: {fileID: 0}
 --- !u!114 &114197320898345266
 MonoBehaviour:
@@ -1243,6 +1247,9 @@ MonoBehaviour:
   floorIgnorer: {fileID: 0}
   selectedUnitEvent: {fileID: 11400000, guid: f62ae552eda345d4aaaf440ecaf62ada, type: 2}
   unselectedUnitEvent: {fileID: 11400000, guid: 864b1f1f7b500144d8782ee68fffd124,
+    type: 2}
+  networkPieceMoved: {fileID: 11400000, guid: e60a26ad652254348bb99c156e7c9f83, type: 2}
+  ghostObject: {fileID: 1109373294804976, guid: a989753838d63f54ab3a699147d67e2a,
     type: 2}
 --- !u!114 &114379370286591928
 MonoBehaviour:

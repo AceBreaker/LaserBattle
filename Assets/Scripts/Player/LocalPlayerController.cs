@@ -40,12 +40,6 @@ namespace LaserBattle
 
         private void OnEnable()
         {
-            mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
-            if (mainCamera == null)
-            {
-                Debug.LogError("mainCamera is not set, will cause errors");
-            }
-
             selectedObject = null;
             moved = false;
         }
@@ -301,9 +295,19 @@ namespace LaserBattle
             //TODO: get rid of magic numbers
             if (selectedObject)
             {
+                if(mainCamera == null)
+                {
+                    GameObject camObject = GameObject.Find("Main Camera");
+                    if(camObject == null)
+                    {
+                        Debug.LogError("There is no Main Camera object in the scene. Aborting OnMouseDrag");
+                        return;
+                    }
+                    mainCamera = camObject.GetComponent<Camera>();
+                }
                 Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hit;
-                if (Physics.Raycast(ray, out hit, 100.0f, raycastLayerWithSelectedObject))
+                if (GameManager.gameStarted && Physics.Raycast(ray, out hit, 100.0f, raycastLayerWithSelectedObject))
                 {
                     switch (hit.transform.gameObject.tag)
                     {

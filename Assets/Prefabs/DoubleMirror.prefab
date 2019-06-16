@@ -1097,6 +1097,9 @@ MonoBehaviour:
   selectedUnitEvent: {fileID: 11400000, guid: f62ae552eda345d4aaaf440ecaf62ada, type: 2}
   unselectedUnitEvent: {fileID: 11400000, guid: 864b1f1f7b500144d8782ee68fffd124,
     type: 2}
+  networkPieceMoved: {fileID: 11400000, guid: e60a26ad652254348bb99c156e7c9f83, type: 2}
+  ghostObject: {fileID: 1886894906493336, guid: 1aa20a9c0b2cb0347b9515b0df2c36bf,
+    type: 2}
 --- !u!114 &114210679889248994
 MonoBehaviour:
   m_ObjectHideFlags: 1

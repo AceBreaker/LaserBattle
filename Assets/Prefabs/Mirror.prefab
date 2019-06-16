@@ -1936,6 +1936,9 @@ MonoBehaviour:
   selectedUnitEvent: {fileID: 11400000, guid: f62ae552eda345d4aaaf440ecaf62ada, type: 2}
   unselectedUnitEvent: {fileID: 11400000, guid: 864b1f1f7b500144d8782ee68fffd124,
     type: 2}
+  networkPieceMoved: {fileID: 11400000, guid: e60a26ad652254348bb99c156e7c9f83, type: 2}
+  ghostObject: {fileID: 1394785661744230, guid: 082c5b1e8c3b30e46af85b8e9aae07c8,
+    type: 2}
 --- !u!114 &114681048176262882
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1964,6 +1967,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destroyParticles: {fileID: 1828176872806910, guid: 64891a0eb28db934898420d80ca07cb3,
     type: 2}
+  audio: {fileID: 0}
 --- !u!114 &114822317397643072
 MonoBehaviour:
   m_ObjectHideFlags: 1

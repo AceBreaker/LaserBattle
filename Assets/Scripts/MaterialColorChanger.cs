@@ -55,5 +55,4 @@ public class MaterialColorChanger : MonoBehaviour {
     {
         startLerping = true;
     }
-        
 }
