@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4502492493857656}
   - component: {fileID: 114749686473900934}
   - component: {fileID: 114357255662874844}
-  m_Layer: 9
+  m_Layer: 13
   m_Name: RedGhostShield
   m_TagString: Movable
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4620372286425022}
   - component: {fileID: 33747972351802304}
   - component: {fileID: 23718758937211686}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 4238403218318586}
   - component: {fileID: 33028319767662496}
   - component: {fileID: 23220984654297338}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Shield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,7 +70,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4880162036383330}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Shield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 4260779616970476}
   - component: {fileID: 33997866060585954}
   - component: {fileID: 23844804235239344}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: powerOrb
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4029111407449944}
   - component: {fileID: 33281836265654160}
   - component: {fileID: 23661199179330386}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: powerOrb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4851644774391500}
   - component: {fileID: 33297051183548822}
   - component: {fileID: 23226623554144482}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Shield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 4272881338090844}
   - component: {fileID: 33861574973323322}
   - component: {fileID: 23849269070086324}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,7 +70,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4218092554860506}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Shield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 4219340423986150}
   - component: {fileID: 114273687668242232}
   - component: {fileID: 114696519814615056}
-  m_Layer: 9
+  m_Layer: 13
   m_Name: BlueGhostShield
   m_TagString: Movable
   m_Icon: {fileID: 0}

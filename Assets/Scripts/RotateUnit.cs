@@ -21,6 +21,8 @@ public class RotateUnit : MonoBehaviour {
 
     public int index = 2;
 
+    int selectedindex = 2;
+
     private void Start()
     {
         for (int i = 0; i < testRot.Length; i++)
@@ -30,6 +32,8 @@ public class RotateUnit : MonoBehaviour {
                 index = i;
             }
         }
+
+        selectedindex = index;
     }
 
     private void Update()
@@ -56,6 +60,21 @@ public class RotateUnit : MonoBehaviour {
         else if (index < 0)
             index = 3;
         if(rotations.Length > index)
+            endPosition = rotations[index];
+        beginMoving = true;
+        timeSinceStart = 0.0f;
+    }
+
+    public void ObjectSelected()
+    {
+        selectedindex = index;
+    }
+
+    public void ResetRotation()
+    {
+        index = selectedindex;
+
+        if (rotations.Length > index)
             endPosition = rotations[index];
         beginMoving = true;
         timeSinceStart = 0.0f;

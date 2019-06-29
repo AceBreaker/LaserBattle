@@ -18,7 +18,8 @@ namespace LaserBattle
         GameObject movedObject = null;
 
         Vector3 objectPositionWhenSelected;
-        Quaternion objectRotationWhenSelected;
+        public Vector3 objectRotationWhenSelected;
+        public Vector3 currRot;
         public GameEvent moveUndone;
 
         const byte MOVEMENT_TAG = 1;
@@ -46,6 +47,12 @@ namespace LaserBattle
 
         public override void Update()
         {
+            if (selectedObject != null)
+            {
+                currRot = selectedObject.transform.rotation.eulerAngles;
+            }
+            else
+                currRot = Vector3.zero;
             //TODO function this out, and get rid of magic numbers.
             if (Input.GetMouseButtonDown(0))
             {
@@ -62,8 +69,9 @@ namespace LaserBattle
                                 {
                                     selectedObject = unit.gameObject;
                                     objectPositionWhenSelected = selectedObject.transform.position;
-                                    objectRotationWhenSelected = selectedObject.transform.rotation;
-
+                                    //objectRotationWhenSelected = selectedObject.transform.rotation;
+                                    objectRotationWhenSelected = selectedObject.transform.rotation.eulerAngles;
+                                    selectedObject.GetComponent<RotateUnit>().ObjectSelected();
                                     blah = selectedObject.transform.rotation.eulerAngles.y;
 
                                     Transform go = selectedObject.transform.FindDeepChild("FloorIgnorer");
@@ -101,6 +109,7 @@ namespace LaserBattle
                             {
                                 if (IsNewLocation(hit) && IsValidLocation(hit))
                                 {
+                                    Debug.Log("movemade: tile");
                                     MoveableUnit u = selectedObject.GetComponent<MoveableUnit>();
                                     if (u != null)
                                     {
@@ -113,6 +122,7 @@ namespace LaserBattle
                                 }
                                 else
                                 {
+                                    Debug.Log("undomove: tile");
                                     UndoMove();
                                 }
                                 break;
@@ -122,6 +132,7 @@ namespace LaserBattle
                                 MoveableUnit unit = hit.transform.GetComponentInParent<MoveableUnit>();
                                 if (unit != null && selectedObject == unit.gameObject && IsNewLocation(hit) && IsValidLocation(hit))
                                 {
+                                    Debug.Log("movemade: movable");
                                     //MoveableUnit u = selectedObject.GetComponentInParent<MoveableUnit>();
                                     if (unit != null)
                                     {
@@ -134,6 +145,24 @@ namespace LaserBattle
                                 }
                                 else
                                 {
+                                    if (unit == null)
+                                    {
+                                        Debug.Log("unit is null");
+                                    }
+                                    if (selectedObject != unit.gameObject)
+                                    {
+                                        Debug.Log("selectedobject different from unit");
+                                    }
+                                    if (!IsNewLocation(hit))
+                                    {
+                                        Debug.Log("not new location");
+                                    }
+                                    if(!IsValidLocation(hit))
+                                    {
+                                        Debug.Log("not valid location");
+                                    }
+
+                                    Debug.Log("undomove: movable");
                                     UndoMove();
                                 }
                                 break;
@@ -185,10 +214,14 @@ namespace LaserBattle
             if (u.CanMove())
             {
                 selectedObject.transform.position = objectPositionWhenSelected;
-                selectedObject.transform.rotation = objectRotationWhenSelected;
+                //selectedObject.transform.rotation = Quaternion.Lerp(selectedObject.transform.rotation, objectRotationWhenSelected, 1.0f);
+                //selectedObject.transform.rotation = Quaternion.Euler(objectRotationWhenSelected);
+                selectedObject.GetComponent<RotateUnit>().ResetRotation();
+
 
                 objectPositionWhenSelected = Vector3.zero;
-                objectRotationWhenSelected = Quaternion.identity;
+                //objectRotationWhenSelected = Quaternion.identity;
+                objectRotationWhenSelected = Vector3.zero;
             }
             selectedObject = null;
             movedObject = null;
@@ -210,13 +243,15 @@ namespace LaserBattle
             }
             else if (Mathf.Abs(selectedObject.transform.position.x - objectPositionWhenSelected.x) < 1.5f &&
                 Mathf.Abs(selectedObject.transform.position.z - objectPositionWhenSelected.z) < 1.5f &&
-                selectedObject.transform.rotation == objectRotationWhenSelected)
+                //selectedObject.transform.rotation == objectRotationWhenSelected)
+                selectedObject.transform.eulerAngles == objectRotationWhenSelected)
             {
                 return true;
             }
             else if (Mathf.Abs(selectedObject.transform.position.x - objectPositionWhenSelected.x) == 0.0f &&
                 Mathf.Abs(selectedObject.transform.position.z - objectPositionWhenSelected.z) == 0.0f &&
-                selectedObject.transform.rotation != objectRotationWhenSelected)
+                //selectedObject.transform.rotation != objectRotationWhenSelected)
+                selectedObject.transform.eulerAngles != objectRotationWhenSelected)
             {
                 return true;
             }
@@ -231,6 +266,7 @@ namespace LaserBattle
             Debug.Log("finalizing move here");
             if (movedObject == null)
             {
+                Debug.LogError("no moved object. aborting");
                 return;
             }
 
@@ -240,11 +276,12 @@ namespace LaserBattle
                 u = movedObject.GetComponentInParent<Unit>();
             }
             u.FinalizeMove();
-            //movedObject.transform.Find("FloorIgnorer").gameObject.SetActive(true);
+
             if (u.CanMove())
             {
                 objectPositionWhenSelected = Vector3.zero;
-                objectRotationWhenSelected = Quaternion.identity;
+                //objectRotationWhenSelected = Quaternion.identity;
+                objectRotationWhenSelected = Vector3.zero;
             }
 
             SendMessage(movedObject);
@@ -256,6 +293,9 @@ namespace LaserBattle
 
         void SendMessage(GameObject movingObject)
         {
+            if (PlayerCreator.connected == false)
+                return;
+
             using (DarkRiftWriter writer = DarkRiftWriter.Create())
             {
                 Transform go = movingObject.transform.parent;
@@ -272,7 +312,7 @@ namespace LaserBattle
                 writer.Write(movingObject.transform.position.x);
                 writer.Write(movingObject.transform.position.z);
                 writer.Write(movingObject.transform.rotation.eulerAngles.y);
-                Debug.Log("asdfkjhasdfkljhasdklfjh");
+
                 using (Message message = Message.Create(MOVEMENT_TAG, writer))
                 {
                     client.SendMessage(message, SendMode.Reliable);
@@ -280,9 +320,39 @@ namespace LaserBattle
             }
         }
 
+        //With absolute value
+        public bool Approximately(Vector3 me, Vector3 other, float allowedDifference)
+        {
+            var dx = me.x - other.x;
+            if (Mathf.Abs(dx) > allowedDifference)
+                return false;
+
+            var dy = me.y - other.y;
+            if (Mathf.Abs(dy) > allowedDifference)
+                return false;
+
+            var dz = me.z - other.z;
+
+            return Mathf.Abs(dz) >= allowedDifference;
+        }
+
         bool IsNewLocation(RaycastHit hit)
         {
-            if (hit.transform.position != objectPositionWhenSelected || hit.transform.rotation != objectRotationWhenSelected)
+            Debug.Log("comparison: " + new Vector3(hit.transform.position.x, 0.9f, hit.transform.position.z) + ", " + new Vector3(objectPositionWhenSelected.x, 0.9f, objectPositionWhenSelected.z));
+            //Debug.Log("comparison: " + Quaternion.Angle( hit.transform.rotation,objectRotationWhenSelected));
+            //float angle = Quaternion.Angle(hit.transform.rotation, objectRotationWhenSelected);
+            //float angle = Quaternion.Angle(hit.transform.rotation, objectRotationWhenSelected);
+            //if (!Approximately(new Vector3(hit.transform.position.x, 0.9f, hit.transform.position.z), new Vector3(objectPositionWhenSelected.x, 0.9f, objectPositionWhenSelected.z), 0.001f))
+            //{
+            //    Debug.Log("position has changed asdfasfdasdfasdf");
+            //}
+            //if((angle< 98.0f || angle> 99.0f))
+            //{
+            //    Debug.Log("rotation is not the same fdsafdsafdsafdsa");
+            //}
+            if (!Approximately(new Vector3(hit.transform.position.x, 0.9f, hit.transform.position.z), new Vector3(objectPositionWhenSelected.x, 0.9f, objectPositionWhenSelected.z), 0.001f)
+                //|| (angle < 98.0f || angle > 99.0f))
+                || objectRotationWhenSelected != hit.transform.rotation.eulerAngles)
                 return true;
 
             return false;
@@ -348,6 +418,19 @@ namespace LaserBattle
             }
 
             float inputY = Input.mouseScrollDelta.y;
+
+            if(inputY == 0.0f)
+            {
+                if(Input.GetButtonDown("RotateLeft"))
+                {
+                    inputY = -1.0f;
+                }
+                if (Input.GetButtonDown("RotateRight"))
+                {
+                    inputY = 1.0f;
+                }
+            }
+
             if (inputY != 0.0f)
             {
                 blah += 90.0f * inputY;

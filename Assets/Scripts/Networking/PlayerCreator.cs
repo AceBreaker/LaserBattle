@@ -21,6 +21,11 @@ namespace LaserBattle
         public GameEvent redTurnEnd;
         public GameEvent blueTurnEnd;
 
+        public UnityEngine.UI.Text redPlayerText;
+        public UnityEngine.UI.Text bluePlayerText;
+
+        public static bool connected = false;
+
         private void Awake()
         {
             if (client == null)
@@ -51,11 +56,28 @@ namespace LaserBattle
 
                             if(id == client.ID)
                             {
-                                //Do nothing
+                                if (index == 0)
+                                {
+                                    redPlayerText.text += " Connected";
+                                }
+                                else if (index == 1)
+                                {
+                                    bluePlayerText.text += " Connected";
+                                }
+
+                                connected = true;
                             }
                             else
                             {
                                 players[index].SetPlayerController(networkPlayers[index]);
+                                if(index == 0)
+                                {
+                                    redPlayerText.text += " Connected";
+                                }
+                                else if (index == 1)
+                                {
+                                    bluePlayerText.text += " Connected";
+                                }
                             }
                         }
                     }
@@ -114,7 +136,7 @@ namespace LaserBattle
             MoveableUnit unit = t.gameObject.GetComponent<MoveableUnit>();
             unit.SpawnGhost();
             unit.NetworkMoveUnit(x, z);
-            unit.NetworkRotateUnit(rotation);// + rotationCorrection);
+            unit.NetworkRotateUnit(rotation);
         }
 
         public void ChangePlayer()

@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33434361061616472}
   - component: {fileID: 23621050089964668}
   - component: {fileID: 64220737113095038}
-  m_Layer: 9
+  m_Layer: 13
   m_Name: SemiCylinder
   m_TagString: Movable
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4706341542464382}
   - component: {fileID: 65862215815003718}
-  m_Layer: 9
+  m_Layer: 13
   m_Name: FloorIgnorer
   m_TagString: Ignorer
   m_Icon: {fileID: 0}
@@ -53,7 +53,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4352689352504116}
-  m_Layer: 9
+  m_Layer: 13
   m_Name: Graphics
   m_TagString: Movable
   m_Icon: {fileID: 0}
@@ -70,7 +70,7 @@ GameObject:
   - component: {fileID: 4370257048938332}
   - component: {fileID: 33053961665653470}
   - component: {fileID: 23837403348227816}
-  m_Layer: 9
+  m_Layer: 13
   m_Name: PowerOrb2
   m_TagString: Movable
   m_Icon: {fileID: 0}
@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 23872099114101190}
   - component: {fileID: 65851826598504984}
   - component: {fileID: 114805561534073860}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: DestroyObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 4905227252844004}
   - component: {fileID: 114890794136648428}
   - component: {fileID: 114976615240344358}
-  m_Layer: 9
+  m_Layer: 13
   m_Name: BlueGhostMirror
   m_TagString: Movable
   m_Icon: {fileID: 0}
@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 23812936447691958}
   - component: {fileID: 65348734823391842}
   - component: {fileID: 114434283823305008}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -144,7 +144,7 @@ GameObject:
   - component: {fileID: 23451780307943618}
   - component: {fileID: 65462109990523764}
   - component: {fileID: 114925282280664954}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: DestroyObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -161,7 +161,7 @@ GameObject:
   - component: {fileID: 4344359248815004}
   - component: {fileID: 33687019128786592}
   - component: {fileID: 23704310573536568}
-  m_Layer: 9
+  m_Layer: 13
   m_Name: MirrorFace
   m_TagString: Movable
   m_Icon: {fileID: 0}
@@ -178,7 +178,7 @@ GameObject:
   - component: {fileID: 4709136901073954}
   - component: {fileID: 33771377175193192}
   - component: {fileID: 23892884822036104}
-  m_Layer: 9
+  m_Layer: 13
   m_Name: PowerOrb1
   m_TagString: Movable
   m_Icon: {fileID: 0}
@@ -195,7 +195,7 @@ GameObject:
   - component: {fileID: 4217895395512868}
   - component: {fileID: 33050580806157168}
   - component: {fileID: 23299945341224530}
-  m_Layer: 9
+  m_Layer: 13
   m_Name: PoweOrb3
   m_TagString: Movable
   m_Icon: {fileID: 0}
@@ -212,7 +212,7 @@ GameObject:
   - component: {fileID: 4643316061005472}
   - component: {fileID: 33213917663896422}
   - component: {fileID: 23437094767675340}
-  m_Layer: 9
+  m_Layer: 13
   m_Name: Cylinder
   m_TagString: Movable
   m_Icon: {fileID: 0}
@@ -228,7 +228,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4606491113975642}
   - component: {fileID: 20400105499388652}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
