@@ -285,6 +285,7 @@ namespace LaserBattle
             }
 
             SendMessage(movedObject);
+            //SendLaserDirection();
             selectedObject = null;
             movedObject = null;
             moved = false;
@@ -313,7 +314,45 @@ namespace LaserBattle
                 writer.Write(movingObject.transform.position.z);
                 writer.Write(movingObject.transform.rotation.eulerAngles.y);
 
+                GameObject redLaserGun = GameObject.Find("RedLaserGun");
+                GameObject blueLaserGun = GameObject.Find("BlueLaserGun");
+                writer.Write(redLaserGun.transform.rotation.x);
+                writer.Write(redLaserGun.transform.rotation.y);
+                writer.Write(redLaserGun.transform.rotation.z);
+                writer.Write(redLaserGun.transform.rotation.w);
+
+                writer.Write(blueLaserGun.transform.rotation.x);
+                writer.Write(blueLaserGun.transform.rotation.y);
+                writer.Write(blueLaserGun.transform.rotation.z);
+                writer.Write(blueLaserGun.transform.rotation.w);
+
                 using (Message message = Message.Create(MOVEMENT_TAG, writer))
+                {
+                    client.SendMessage(message, SendMode.Reliable);
+                }
+            }
+        }
+
+        void SendLaserDirection()
+        {
+            if (PlayerCreator.connected == false)
+                return;
+
+            using (DarkRiftWriter writer = DarkRiftWriter.Create())
+            {
+                GameObject redLaserGun = GameObject.Find("RedLaserGun");
+                GameObject blueLaserGun = GameObject.Find("BlueLaserGun");
+                writer.Write(redLaserGun.transform.rotation.x);
+                writer.Write(redLaserGun.transform.rotation.y);
+                writer.Write(redLaserGun.transform.rotation.z);
+                writer.Write(redLaserGun.transform.rotation.w);
+
+                writer.Write(blueLaserGun.transform.rotation.x);
+                writer.Write(blueLaserGun.transform.rotation.y);
+                writer.Write(blueLaserGun.transform.rotation.z);
+                writer.Write(blueLaserGun.transform.rotation.w);
+
+                using (Message message = Message.Create(Tags.ChangeLaserDirectionTag, writer))
                 {
                     client.SendMessage(message, SendMode.Reliable);
                 }

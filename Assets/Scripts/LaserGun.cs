@@ -108,16 +108,11 @@ namespace LaserBattle
                         AddToLine(vectors);
                         Base b = hit.transform.gameObject.GetComponent<Base>();
                         b.baseDestroyedEvent.Raise();
-                        //if (b.playerNumber == PlayerNumbers.ONE)
-                        //{
-                        //    blueWins.Raise();
-                        //}
-                        //else if (b.playerNumber == PlayerNumbers.TWO)
-                        //{
-                        //    redWins.Raise();
-                        //}
-                        //Destroy(hit.transform.gameObject);
-
+                        return;
+                    }
+                    if(hit.transform.gameObject.layer == LayerMask.NameToLayer("Laser"))
+                    {
+                        AddToLine(vectors);
                         return;
                     }
                 }

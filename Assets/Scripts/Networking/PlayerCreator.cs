@@ -95,16 +95,42 @@ namespace LaserBattle
                             float rotation = reader.ReadSingle();
 
                             Transform unitsParentTransform = GameObject.Find("Units").transform;
-                            for(int i = 0; i < unitsParentTransform.childCount; i++)
+                            for (int i = 0; i < unitsParentTransform.childCount; i++)
                             {
-                                if(pieceId == i)
+                                if (pieceId == i)
                                 {
                                     Transform t = unitsParentTransform.GetChild(i);
                                     MovePiece(t, x, z, rotation);
                                     break;
                                 }
                             }
+
+                            while (reader.Position < reader.Length)
+                            {
+                                GameObject.Find("RedLaserGun").transform.rotation = new Quaternion(reader.ReadSingle(),
+                                    reader.ReadSingle(),
+                                    reader.ReadSingle(),
+                                    reader.ReadSingle());
+                                GameObject.Find("BlueLaserGun").transform.rotation = new Quaternion(reader.ReadSingle(),
+                                    reader.ReadSingle(),
+                                    reader.ReadSingle(),
+                                    reader.ReadSingle());
+                            }
                             StartCoroutine(TurnEnd());
+                        }
+                    }
+                    else if (message.Tag == Tags.ChangeLaserDirectionTag)
+                    {
+                        while (reader.Position < reader.Length)
+                        {
+                            GameObject.Find("RedLaserGun").transform.rotation = new Quaternion(reader.ReadSingle(),
+                                reader.ReadSingle(),
+                                reader.ReadSingle(),
+                                reader.ReadSingle());
+                            GameObject.Find("BlueLaserGun").transform.rotation = new Quaternion(reader.ReadSingle(),
+                                reader.ReadSingle(),
+                                reader.ReadSingle(),
+                                reader.ReadSingle());
                         }
                     }
                 }

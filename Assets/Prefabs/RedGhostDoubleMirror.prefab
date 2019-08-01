@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4488452225927168}
   - component: {fileID: 33880166070277700}
   - component: {fileID: 23761631585499824}
-  - component: {fileID: 65414759615820658}
   - component: {fileID: 114563480939167116}
   m_Layer: 13
   m_Name: Mirror1
@@ -40,7 +39,6 @@ GameObject:
   - component: {fileID: 4278891666702332}
   - component: {fileID: 33637273828784534}
   - component: {fileID: 23210159714594290}
-  - component: {fileID: 65228075483919646}
   m_Layer: 13
   m_Name: Graphics
   m_TagString: Movable
@@ -75,7 +73,6 @@ GameObject:
   - component: {fileID: 4558727157866838}
   - component: {fileID: 33714606238967112}
   - component: {fileID: 23541501625684116}
-  - component: {fileID: 65425879968844600}
   - component: {fileID: 114011530099346856}
   m_Layer: 13
   m_Name: Mirror2
@@ -265,42 +262,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000711951520526}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &65228075483919646
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1656330753884314}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!65 &65414759615820658
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000711951520526}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!65 &65425879968844600
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1915466650732472}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114011530099346856
 MonoBehaviour:
   m_ObjectHideFlags: 1

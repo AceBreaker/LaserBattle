@@ -11,5 +11,6 @@ namespace LaserBattle
         public static readonly ushort MovePieceTag = 1;
         public static readonly ushort DespawnPlayerTag = 2;
         public static readonly ushort EndTurnTag = 3;
+        public static readonly ushort ChangeLaserDirectionTag = 4;
     }
 }

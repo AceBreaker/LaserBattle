@@ -188,7 +188,6 @@ namespace LaserBattle
                 jobsDone1 = true;
             }
             transform.localPosition = Vector3.Lerp(startingPosition, Vector3.zero, t);
-            Debug.Log(startingTransform.localPosition.ToString());
         }
 
         private void RotationStartingCharge()
